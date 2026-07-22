@@ -1,0 +1,21 @@
+BILDER AUSTAUSCHEN — KUNZ GLOBAL WEBSITE
+==========================================
+
+Lege deine eigenen Bilder einfach mit genau diesen Dateinamen in diesen
+Ordner (public/images/). Die Website erkennt sie automatisch — kein Code
+muss angepasst werden. Solange eine Datei fehlt, zeigt die Seite einen
+neutralen Platzhalter (kein kaputtes Bild-Symbol).
+
+1) logo.png
+   - Wird im Kopfbereich (Header) und in der Fußzeile (Footer) angezeigt.
+   - Empfehlung: quadratisch, mind. 200x200 px, transparenter Hintergrund
+     (PNG), damit es auf hellem und dunklem Untergrund gut aussieht.
+
+2) geschaeftsfuehrer.jpg
+   - Dein Foto als Geschäftsführer, erscheint im Vertrauens-Block auf der
+     Startseite ("Ein Name, der für Kunz Global steht").
+   - Empfehlung: Hochformat oder quadratisch, mind. 800x800 px,
+     professionelles Porträt.
+
+Nach dem Ersetzen einfach die Seite neu laden (bzw. neu bauen mit
+"npm run build", falls du die Seite bereits veröffentlicht hast).
