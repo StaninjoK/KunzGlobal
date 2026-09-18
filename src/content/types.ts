@@ -1,0 +1,218 @@
+import type { BrandId, PageId } from "../site/config";
+
+/** Headline split into a plain part and an accented (serif italic) part. */
+export type Headline = readonly [plain: string, accent: string];
+
+export interface Titled {
+  title: string;
+  text: string;
+}
+
+export interface BusinessCopy {
+  category: string;
+  /** One or two sentences for cards and the ecosystem panel. */
+  short: string;
+  /** Longer paragraph for the businesses page. */
+  long: string;
+  focus: readonly string[];
+  /** Optional, deliberately quiet status line (e.g. early access). */
+  status?: string;
+}
+
+export interface Content {
+  meta: Record<PageId | "notFound", { title: string; description: string }>;
+  nav: {
+    businesses: string;
+    about: string;
+    vision: string;
+    contact: string;
+    menu: string;
+    close: string;
+    language: string;
+    skip: string;
+    home: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: Headline;
+    lead: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    /** Six sector labels placed around the hero network. */
+    sectors: readonly [string, string, string, string, string, string];
+    networkAlt: string;
+    scroll: string;
+  };
+  group: {
+    eyebrow: string;
+    title: Headline;
+    lead: string;
+    body: string;
+    facts: readonly { label: string; value: string }[];
+  };
+  portfolio: {
+    eyebrow: string;
+    title: Headline;
+    lead: string;
+    visit: string;
+    /** Shown instead of a link when a business has no verified website. */
+    noSite: string;
+    viewAll: string;
+    external: string;
+  };
+  businesses: Record<BrandId, BusinessCopy>;
+  ecosystem: {
+    eyebrow: string;
+    title: Headline;
+    lead: string;
+    centerLabel: string;
+    centerText: string;
+    futureName: string;
+    futureCategory: string;
+    futureText: string;
+  };
+  featured: {
+    eyebrow: string;
+    title: Headline;
+    items: Record<"agrotech" | "agralon" | "sourcing" | "renvora", { kicker: string; title: string; text: string; alt: string }>;
+    renvoraSteps: readonly [string, string, string, string, string];
+    renvoraCaption: string;
+  };
+  principles: {
+    eyebrow: string;
+    title: Headline;
+    items: readonly [Titled, Titled, Titled, Titled];
+  };
+  uruguay: {
+    eyebrow: string;
+    title: Headline;
+    text: string;
+    points: readonly [Titled, Titled, Titled];
+    globeAlt: string;
+    marker: string;
+  };
+  future: {
+    eyebrow: string;
+    title: Headline;
+    text: string;
+    fields: readonly string[];
+    note: string;
+  };
+  cta: { title: Headline; text: string; button: string };
+  businessesPage: { eyebrow: string; title: Headline; lead: string; focusLabel: string; futureLink: string };
+  about: {
+    eyebrow: string;
+    title: Headline;
+    lead: string;
+    story: readonly [Titled, Titled, Titled, Titled];
+    approachTitle: string;
+    leadership: { eyebrow: string; title: string; text: string; role: string; photoAlt: string };
+    facts: readonly { label: string; value: string }[];
+  };
+  contactPage: {
+    eyebrow: string;
+    title: Headline;
+    lead: string;
+    form: {
+      name: string;
+      company: string;
+      email: string;
+      area: string;
+      areaGeneral: string;
+      message: string;
+      optional: string;
+      submit: string;
+      /** Honest note: the form opens the visitor's e-mail program. */
+      note: string;
+      success: string;
+      errorRequired: string;
+      errorEmail: string;
+      mailSubject: string;
+    };
+    directTitle: string;
+    emailLabel: string;
+    phoneLabel: string;
+    locationLabel: string;
+    location: string;
+  };
+  footer: {
+    tagline: string;
+    businesses: string;
+    company: string;
+    legalTitle: string;
+    legal: string;
+    privacy: string;
+    terms: string;
+    location: string;
+    rights: string;
+  };
+  notFound: { title: string; text: string; back: string };
+  legalOverrides: {
+    /** Replaces the old two-link sentence about subsidiaries. */
+    brandsTitle: string;
+    brandsText: string;
+    socialTitle: string;
+    socialText: string;
+    formTitle: string;
+    formText: string;
+    updated: string;
+  };
+}
+
+export interface LegalSection {
+  title: string;
+  text: string;
+}
+
+export interface LegalContent {
+  impressum: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    providerTitle: string;
+    providerLines: string[];
+    contactTitle: string;
+    emailLabel: string;
+    phoneLabel: string;
+    websiteLabel: string;
+    companyDataTitle: string;
+    companyDataLines: string[];
+    responsibleTitle: string;
+    responsibleText: string;
+    subsidiariesTitle: string;
+    disclaimerTitle: string;
+    disclaimerText: string;
+  };
+  datenschutz: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    controllerTitle: string;
+    controllerLines: string[];
+    minimizationTitle: string;
+    minimizationText: string;
+    serverDataTitle: string;
+    serverDataText: string;
+    contactTitle: string;
+    contactText: string;
+    socialTitle: string;
+    socialText: string;
+    cookiesTitle: string;
+    cookiesText: string;
+    rightsTitle: string;
+    rightsIntro: string;
+    rightsList: string[];
+    rightsOutro: string;
+    securityTitle: string;
+    securityText: string;
+    changesTitle: string;
+    changesText: string;
+  };
+  agb: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    sections: LegalSection[];
+    responsibleLine: string;
+  };
+}

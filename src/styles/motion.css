@@ -1,0 +1,95 @@
+/* Motion system.
+   - Reveal states exist only when scripting is available (html.js), so content is never hidden without it.
+   - Everything is switched off for prefers-reduced-motion. */
+
+.js [data-reveal]:not([data-reveal="lines"]):not([data-reveal="media"]) {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+}
+.js [data-reveal].is-in:not([data-reveal="lines"]):not([data-reveal="media"]) {
+  opacity: 1;
+  transform: none;
+}
+/* cards keep their hover transform once revealed */
+.js .card[data-reveal].is-in {
+  transition: opacity var(--t-slow) var(--ease), transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+  transition-delay: 0s;
+}
+.js .card[data-reveal].is-in:hover {
+  transform: translateY(-4px);
+}
+
+.js [data-reveal="lines"] .headline__line > span {
+  transform: translate3d(0, 108%, 0);
+  transition: transform 1.25s var(--ease);
+}
+.js [data-reveal="lines"] .headline__line:nth-child(2) > span {
+  transition-delay: 0.12s;
+}
+.js [data-reveal="lines"].is-in .headline__line > span {
+  transform: none;
+}
+
+/* the clip sits on the children: a fully clipped element would never report as intersecting */
+.js [data-reveal="media"] > * {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.5s var(--ease);
+}
+.js [data-reveal="media"].is-in > * {
+  clip-path: inset(0 0 0 0);
+}
+.js .origin__globe[data-reveal="media"] > * {
+  clip-path: none;
+}
+.js .origin__globe[data-reveal="media"] {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 1.4s var(--ease), transform 1.6s var(--ease);
+}
+.js .origin__globe[data-reveal="media"].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .js [data-reveal],
+  .js [data-reveal="media"] > *,
+  .js [data-reveal] .headline__line > span,
+  .js .chips li,
+  .js .eco__center,
+  .js .eco__nodes li,
+  .hero-net__nodes g {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .hero-net__spokes path,
+  .js .eco__lines path,
+  .js .globe__arc path {
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+  }
+  .js .globe__arc > circle:not(.globe__pulse) {
+    opacity: 1 !important;
+  }
+  .hero-net__pulses,
+  .globe__pulse,
+  .flow__signal,
+  .hero__scroll {
+    display: none !important;
+  }
+  .feature__media--photo .parallax {
+    transform: none !important;
+  }
+}
