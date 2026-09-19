@@ -17,7 +17,8 @@
   transition: opacity var(--t-slow) var(--ease), transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
   transition-delay: 0s;
 }
-.js .card[data-reveal].is-in:hover {
+.js .card[data-reveal].is-in:hover,
+.js .card[data-reveal].is-in:focus-within {
   transform: translateY(-4px);
 }
 
@@ -66,7 +67,6 @@
   .js [data-reveal],
   .js [data-reveal="media"] > *,
   .js [data-reveal] .headline__line > span,
-  .js .chips li,
   .js .eco__center,
   .js .eco__nodes li,
   .hero-net__nodes g {

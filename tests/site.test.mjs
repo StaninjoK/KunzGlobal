@@ -58,7 +58,8 @@ test("links, anchors and images resolve; external links are verified ones", () =
     for (const [, href] of html.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)) {
       if (href.startsWith("mailto:") || href.startsWith("tel:")) continue;
       if (/^https?:/.test(href)) {
-        assert.ok(ALLOWED_EXTERNAL.includes(href), `${r.url} links to unverified ${href}`);
+        // pages and anchors on a verified site are fine (targets per language: src/site/config.ts BRAND_TARGET)
+        assert.ok(ALLOWED_EXTERNAL.includes(new URL(href).origin + "/"), `${r.url} links to unverified ${href}`);
         continue;
       }
       const [file, hash] = href.split("#");
@@ -73,6 +74,17 @@ test("links, anchors and images resolve; external links are verified ones", () =
       assert.match(tag, /\salt="/, `${r.url} image without alt: ${tag.slice(0, 80)}`);
       assert.match(tag, /\swidth="\d+"/, `${r.url} image without dimensions`);
     }
+  }
+});
+
+test("portfolio cards name the offer and a specific next step", () => {
+  const generic = /Visit website|Website besuchen|Visitar sitio web|Visitar site/;
+  for (const lang of LANGS) {
+    const html = read(lang === "en" ? "/" : `/${lang}/`);
+    const portfolio = html.slice(html.indexOf('id="businesses"'), html.indexOf('id="ecosystem"'));
+    assert.equal((portfolio.match(/<article class="card /g) || []).length, 6, `${lang}: six cards`);
+    assert.equal((portfolio.match(/class="brand-link card__link"/g) || []).length, 6, `${lang}: one primary link per card`);
+    assert.ok(!generic.test(visibleText(html)), `${lang}: generic link label left`);
   }
 });
 

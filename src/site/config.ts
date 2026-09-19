@@ -53,6 +53,51 @@ export const BRAND: Record<BrandId, Brand> = {
   akquise: { id: "akquise", name: "KunzAkquise", url: "https://kunzakquise.com/", domain: "kunzakquise.com" },
 };
 
+export interface BrandTarget {
+  href: string;
+  /** Language of the target page, shown when it differs from the page language. */
+  lang: Lang;
+}
+
+/**
+ * Where the primary call to action of each business points, per page language.
+ * Every URL and anchor was checked on 2026-09-19 (HTTP 200, section id present).
+ * `null`: no verified website, the call to action leads to the Kunz Global contact page.
+ */
+export const BRAND_TARGET: Record<BrandId, Record<Lang, BrandTarget> | null> = {
+  agrotech: {
+    en: { href: "https://kunzagrotech.com/en/#servicios", lang: "en" },
+    es: { href: "https://kunzagrotech.com/#servicios", lang: "es" },
+    de: { href: "https://kunzagrotech.com/de/#servicios", lang: "de" },
+    pt: { href: "https://kunzagrotech.com/pt/#servicios", lang: "pt" },
+  },
+  agralon: {
+    en: { href: "https://agralon.com/en", lang: "en" },
+    es: { href: "https://agralon.com/", lang: "es" },
+    de: { href: "https://agralon.com/de", lang: "de" },
+    pt: { href: "https://agralon.com/pt", lang: "pt" },
+  },
+  sourcing: {
+    en: { href: "https://kunzsourcing.com/#categories", lang: "en" },
+    es: { href: "https://kunzsourcing.com/es/#categories", lang: "es" },
+    de: { href: "https://kunzsourcing.com/de/#categories", lang: "de" },
+    pt: { href: "https://kunzsourcing.com/#categories", lang: "en" },
+  },
+  renvora: {
+    en: { href: "https://renvora.lat/", lang: "en" },
+    es: { href: "https://renvora.lat/es", lang: "es" },
+    de: { href: "https://renvora.lat/de", lang: "de" },
+    pt: { href: "https://renvora.lat/pt", lang: "pt" },
+  },
+  versicherung: null,
+  akquise: {
+    en: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
+    es: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
+    de: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
+    pt: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
+  },
+};
+
 /** Contact details already published on the previous kunzglobal.com. */
 export const CONTACT = {
   email: "stan@kunzglobal.com",

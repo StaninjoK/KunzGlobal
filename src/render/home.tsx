@@ -1,26 +1,33 @@
 import type { ReactNode } from "react";
-import { BRAND, pagePath } from "../site/config";
+import { BRAND, BRAND_TARGET, pagePath } from "../site/config";
 import type { BrandId } from "../site/config";
 import { Arrow, Eyebrow, Headline, Picture } from "./layout";
 import type { PageContext } from "./layout";
 import { Ecosystem, Globe, HeroNetwork, RenvoraFlow } from "./graphics";
 
+/** Primary call to action of a business: its own label, the verified target in the page language. */
 export function BrandLink({ id, ctx, className = "" }: { id: BrandId; ctx: PageContext; className?: string }) {
   const { t, lang } = ctx;
-  const brand = BRAND[id];
-  if (!brand.url) {
+  const b = t.businesses[id];
+  const target = BRAND_TARGET[id]?.[lang];
+  if (!target) {
     return (
       <a className={`brand-link ${className}`.trim()} href={pagePath(lang, "contact")}>
-        <span>{t.portfolio.noSite}</span>
+        <span>{b.cta}</span>
         <Arrow />
       </a>
     );
   }
+  const note = target.lang !== lang ? ` · ${t.portfolio.siteLang[target.lang]}` : "";
   return (
-    <a className={`brand-link ${className}`.trim()} href={brand.url} target="_blank" rel="noopener">
+    <a className={`brand-link ${className}`.trim()} href={target.href} hrefLang={target.lang} target="_blank" rel="noopener">
       <span>
-        {t.portfolio.visit}
-        <span className="brand-link__domain"> · {brand.domain}</span>
+        {b.cta}
+        <span className="brand-link__domain">
+          {" "}
+          · {BRAND[id].domain}
+          {note}
+        </span>
       </span>
       <Arrow diagonal />
       <span className="sr-only"> ({t.portfolio.external})</span>
@@ -28,18 +35,40 @@ export function BrandLink({ id, ctx, className = "" }: { id: BrandId; ctx: PageC
   );
 }
 
-function Card({ id, ctx, variant, children }: { id: BrandId; ctx: PageContext; variant: string; children?: ReactNode }) {
-  const b = ctx.t.businesses[id];
+/** Art-directed photo for a portfolio card: landscape crop from 900 px, portrait file below. */
+type CardImage = { name: string; widths: number[]; w: number; h: number; fallback: number };
+
+function CardPhoto({ wide, narrow }: { wide: CardImage; narrow: CardImage }) {
+  const set = (name: string, widths: number[]) => widths.map((w) => `/img/${name}-${w}.webp ${w}w`).join(", ");
+  return (
+    <picture>
+      <source type="image/webp" media="(min-width: 900px)" srcSet={set(wide.name, wide.widths)} sizes="(min-width: 1560px) 900px, 58vw" />
+      <source type="image/webp" srcSet={set(narrow.name, narrow.widths)} sizes="100vw" />
+      <img src={`/img/${narrow.name}-${narrow.fallback}.jpg`} alt="" width={narrow.w} height={narrow.h} loading="lazy" decoding="async" />
+    </picture>
+  );
+}
+
+function Card({ id, ctx, variant, media, visual, extra }: { id: BrandId; ctx: PageContext; variant: string; media?: ReactNode; visual?: ReactNode; extra?: ReactNode }) {
+  const { t } = ctx;
+  const b = t.businesses[id];
   return (
     <article className={`card card--${variant}`} data-reveal>
-      {children && <div className="card__media">{children}</div>}
+      {media && <div className="card__media">{media}</div>}
       <div className="card__body">
         <p className="card__cat">{b.category}</p>
         <h3 className="card__name">{BRAND[id].name}</h3>
-        <p className="card__text">{b.short}</p>
-        {b.status && <p className="card__status">{b.status}</p>}
+        <p className="card__text">{b.offer}</p>
+        {extra}
+        {b.status && (
+          <p className="card__status">
+            <span className="sr-only">{t.featured.statusLabel}: </span>
+            {b.status}
+          </p>
+        )}
         <BrandLink id={id} ctx={ctx} className="card__link" />
       </div>
+      {visual && <div className="card__visual">{visual}</div>}
     </article>
   );
 }
@@ -124,24 +153,54 @@ export function Home({ ctx }: { ctx: PageContext }) {
             </p>
           </div>
           <div className="bento">
-            <Card id="agrotech" ctx={ctx} variant="photo card--a">
-              <Picture name="agrotech-flight" widths={[480, 800, 1200]} fallback={800} alt="" sizes="(min-width: 900px) 56vw, 100vw" width={1200} height={1600} />
-            </Card>
-            <Card id="agralon" ctx={ctx} variant="dark card--b">
-              <Picture name={`agralon-platform-${lang}`} widths={[800, 1400, 2200]} fallback={1400} alt="" sizes="(min-width: 900px) 60vw, 140vw" width={2352} height={1566} />
-            </Card>
-            <Card id="sourcing" ctx={ctx} variant="photo card--c">
-              <Picture name="sourcing-fibre" widths={[480, 680]} fallback={680} alt="" sizes="(min-width: 900px) 40vw, 100vw" width={680} height={850} />
-            </Card>
-            <Card id="renvora" ctx={ctx} variant="dark card--d">
-              <div className="card__signal" aria-hidden="true">
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-              </div>
-            </Card>
+            <Card
+              id="agrotech"
+              ctx={ctx}
+              variant="photo card--a"
+              media={<CardPhoto wide={{ name: "agrotech-flight-wide", widths: [800, 1200], w: 1200, h: 940, fallback: 1200 }} narrow={{ name: "agrotech-flight", widths: [480, 800, 1200], w: 800, h: 1067, fallback: 800 }} />}
+            />
+            <Card
+              id="agralon"
+              ctx={ctx}
+              variant="dark card--b"
+              extra={
+                <ol className="card__flow">
+                  {t.portfolio.agralonFlow.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              }
+              visual={
+                <figure className="card__screen">
+                  <figcaption>{t.portfolio.sampleData}</figcaption>
+                  <Picture name={`agralon-jobs-${lang}`} widths={[600, 1000]} fallback={1000} alt="" sizes="(min-width: 900px) 520px, 100vw" width={1000} height={571} />
+                </figure>
+              }
+            />
+            <Card
+              id="sourcing"
+              ctx={ctx}
+              variant="photo card--c"
+              media={<CardPhoto wide={{ name: "sourcing-warehouse", widths: [800, 1600], w: 1600, h: 747, fallback: 1600 }} narrow={{ name: "sourcing-warehouse-tall", widths: [480, 747], w: 747, h: 1600, fallback: 747 }} />}
+            />
+            <Card
+              id="renvora"
+              ctx={ctx}
+              variant="dark card--d"
+              visual={
+                <figure className="card__schema">
+                  <ol aria-label={t.featured.items.renvora.alt}>
+                    {t.portfolio.renvoraFlow.map((step, i) => (
+                      <li key={step}>
+                        <span>{String(i + 1).padStart(2, "0")}</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                  <figcaption>{t.featured.renvoraCaption}</figcaption>
+                </figure>
+              }
+            />
             <Card id="versicherung" ctx={ctx} variant="plain card--e" />
             <Card id="akquise" ctx={ctx} variant="plain card--f" />
           </div>
@@ -179,8 +238,8 @@ export function Home({ ctx }: { ctx: PageContext }) {
           </div>
 
           <article className="feature">
-            <div className="feature__media feature__media--photo" data-reveal="media">
-              <Picture className="parallax" name="agrotech-field" widths={[800, 1400, 1900]} fallback={1400} alt={f.agrotech.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={1900} height={887} />
+            <div className="feature__media feature__media--photo feature__media--wide" data-reveal="media">
+              <Picture className="parallax" name="agrotech-field" widths={[800, 1400, 1800]} fallback={1400} alt={f.agrotech.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={1800} height={1121} />
             </div>
             <div className="feature__body">
               <p className="feature__kicker" data-reveal>
@@ -197,13 +256,7 @@ export function Home({ ctx }: { ctx: PageContext }) {
           <article className="feature feature--flip">
             <div className="feature__media feature__media--device theme-dark" data-reveal="media">
               <Picture className="device" name={`agralon-platform-${lang}`} widths={[800, 1400, 2200]} fallback={1400} alt={f.agralon.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={2352} height={1566} />
-              <ul className="chips" aria-hidden="true">
-                {t.businesses.agralon.focus.slice(0, 4).map((chip, i) => (
-                  <li key={chip} style={{ ["--i" as string]: i }}>
-                    {chip}
-                  </li>
-                ))}
-              </ul>
+              <p className="feature__caption">{t.portfolio.sampleData}</p>
             </div>
             <div className="feature__body">
               <p className="feature__kicker" data-reveal>
@@ -211,6 +264,14 @@ export function Home({ ctx }: { ctx: PageContext }) {
               </p>
               <h3 data-reveal>{f.agralon.title}</h3>
               <p data-reveal>{f.agralon.text}</p>
+              <ol className="feature__steps" aria-label={t.featured.agralonStepsLabel} data-reveal>
+                {t.featured.agralonSteps.map((step, i) => (
+                  <li key={step}>
+                    <span>{String(i + 1).padStart(2, "0")}</span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
               <div data-reveal>
                 <BrandLink id="agralon" ctx={ctx} />
               </div>
@@ -219,7 +280,7 @@ export function Home({ ctx }: { ctx: PageContext }) {
 
           <article className="feature">
             <div className="feature__media feature__media--photo" data-reveal="media">
-              <Picture className="parallax" name="sourcing-warehouse" widths={[800, 1600]} fallback={1600} alt={f.sourcing.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={1600} height={747} />
+              <Picture className="parallax" name="sourcing-tops" widths={[800, 1600]} fallback={1600} alt={f.sourcing.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={1600} height={747} />
             </div>
             <div className="feature__body">
               <p className="feature__kicker" data-reveal>
@@ -227,6 +288,14 @@ export function Home({ ctx }: { ctx: PageContext }) {
               </p>
               <h3 data-reveal>{f.sourcing.title}</h3>
               <p data-reveal>{f.sourcing.text}</p>
+              <dl className="feature__facts" data-reveal>
+                {t.featured.sourcingFacts.map((fact) => (
+                  <div key={fact.term}>
+                    <dt>{fact.term}</dt>
+                    <dd>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
               <div data-reveal>
                 <BrandLink id="sourcing" ctx={ctx} />
               </div>
@@ -243,6 +312,10 @@ export function Home({ ctx }: { ctx: PageContext }) {
               </p>
               <h3 data-reveal>{f.renvora.title}</h3>
               <p data-reveal>{f.renvora.text}</p>
+              <p className="card__status feature__status" data-reveal>
+                <span className="sr-only">{t.featured.statusLabel}: </span>
+                {t.businesses.renvora.status}
+              </p>
               <div data-reveal>
                 <BrandLink id="renvora" ctx={ctx} />
               </div>

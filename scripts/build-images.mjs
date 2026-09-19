@@ -1,6 +1,7 @@
 // Generates every image in public/img from the original files of the Kunz projects.
 // The originals stay outside this repository; the generated files are committed.
-// Usage: node scripts/build-images.mjs   (paths below can be overridden with KUNZ_ASSETS)
+// Usage: node scripts/build-images.mjs [name ...]   (paths below can be overridden with KUNZ_ASSETS)
+// With names, only those image sets are written (icons, logo mark and OG image only in a full run).
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
@@ -13,15 +14,18 @@ const SRC = {
   field: `${ROOT}/KunzAgrotech/KunzAgrotech-Repo/source/campo/operacion-lote.jpg`,
   flight: `${ROOT}/KunzAgrotech/KunzAgrotech-Repo/source/foto-stanley-t100-vuelo.jpg`,
   platform: (lang) => `${ROOT}/KunzAgrotech/KunzAgrotech-Repo/source/agralon/plataforma-${lang}.png`,
-  warehouse: `${ROOT}/Kunz Sourcing/Webseite/KunzSourcing/assets/img/warehouse-bales-1600.jpg`,
-  fibre: `${ROOT}/Kunz Sourcing/Webseite/KunzSourcing/assets/img/wool-fibre-680.jpg`,
+  // Original photos from the wool supplier's mill (July 2026), not frames from a video.
+  tops: (time) => `${ROOT}/Kunz Sourcing/Bilder von Tops Produktion/WhatsApp Image 2026-07-10 at ${time}.jpeg`,
   portrait: path.resolve("public/images/geschaeftsfuehrer.jpg"),
   logo: `${ROOT}/E-Mail-Signatur/kunzglobal-logo-transparent-hochaufloesend.png`,
 };
 
+const ONLY = process.argv.slice(2);
+
 /** Writes <name>-<w>.webp for every width and one JPEG fallback at the fallback width. */
 async function responsive(name, input, widths, { fallback = widths[1] ?? widths[0], quality = 78, prepare } = {}) {
-  let base = sharp(input, { failOn: "none" }).rotate();
+  if (ONLY.length && !ONLY.includes(name)) return;
+  let base = sharp(await (typeof input === "function" ? input() : input), { failOn: "none" }).rotate();
   if (prepare) base = sharp(await prepare(base).toBuffer());
   for (const w of widths) {
     await base.clone().resize({ width: w, withoutEnlargement: true }).webp({ quality, effort: 6 }).toFile(`${OUT}/${name}-${w}.webp`);
@@ -37,17 +41,39 @@ async function fieldPrepared() {
   return sharp(SRC.field).rotate().composite([{ input: blurred, left: plate.left, top: plate.top }]);
 }
 
-await responsive("agrotech-field", await (await fieldPrepared()).toBuffer(), [800, 1400, 1900], { fallback: 1400, quality: 70 });
+// Featured: the whole working scene (both drone rotors, trailer, pickup) without the empty field on the right.
+await responsive(
+  "agrotech-field",
+  async () => sharp(await (await fieldPrepared()).toBuffer()).extract({ left: 300, top: 0, width: 3000, height: 1868 }).toBuffer(),
+  [800, 1400, 1800],
+  { fallback: 1400, quality: 64 }
+);
+// Portfolio card, mobile: the full portrait photo (drone at the top, pilot below the text).
 await responsive("agrotech-flight", SRC.flight, [480, 800, 1200], { fallback: 800, quality: 72 });
+// Portfolio card, desktop: landscape crop that keeps the complete drone and ends above the pilot.
+await responsive("agrotech-flight-wide", SRC.flight, [800, 1200], {
+  fallback: 1200,
+  quality: 74,
+  prepare: (img) => img.extract({ left: 0, top: 0, width: 1200, height: 940 }),
+});
 for (const lang of ["en", "es", "de", "pt"]) {
   await responsive(`agralon-platform-${lang}`, SRC.platform(lang), [800, 1400, 2200], { fallback: 1400, quality: 84 });
+  // Portfolio card: only the job list with its workflow stages, large enough to read.
+  await responsive(`agralon-jobs-${lang}`, SRC.platform(lang), [600, 1000], {
+    fallback: 1000,
+    quality: 84,
+    prepare: (img) => img.extract({ left: 452, top: 806, width: 980, height: 560 }),
+  });
 }
-await responsive("sourcing-warehouse", SRC.warehouse, [800, 1600], { fallback: 1600, quality: 76 });
-await responsive("sourcing-fibre", SRC.fibre, [480, 680], { fallback: 680 });
+await responsive("sourcing-warehouse", SRC.tops("13.47.56 (1)"), [800, 1600], { fallback: 1600, quality: 76 });
+await responsive("sourcing-warehouse-tall", SRC.tops("13.47.56 (2)"), [480, 747], { fallback: 747, quality: 76 });
+await responsive("sourcing-tops", SRC.tops("13.47.52"), [800, 1600], { fallback: 1600, quality: 76 });
 await responsive("stanley-kunz", SRC.portrait, [400, 800], {
   fallback: 800,
   prepare: (img) => img.resize({ width: 800, height: 1000, fit: "cover", position: "attention" }),
 });
+
+if (ONLY.length) process.exit(0);
 
 // Logo mark (left part of the lockup) as an alpha mask; the page colours it with CSS.
 const mark = sharp(SRC.logo).extract({ left: 0, top: 0, width: 252, height: 267 }).resize({ height: 256 });

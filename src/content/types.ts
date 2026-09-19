@@ -10,8 +10,12 @@ export interface Titled {
 
 export interface BusinessCopy {
   category: string;
-  /** One or two sentences for cards and the ecosystem panel. */
+  /** One sentence for the ecosystem panel. */
   short: string;
+  /** Portfolio card: what is offered and for whom, in one or two sentences. */
+  offer: string;
+  /** Label of the primary link; must match what the target page offers. */
+  cta: string;
   /** Longer paragraph for the businesses page. */
   long: string;
   focus: readonly string[];
@@ -54,11 +58,16 @@ export interface Content {
     eyebrow: string;
     title: Headline;
     lead: string;
-    visit: string;
-    /** Shown instead of a link when a business has no verified website. */
-    noSite: string;
     viewAll: string;
     external: string;
+    /** "site in English" etc., keyed by the target site's language. */
+    siteLang: Record<"en" | "es" | "de" | "pt", string>;
+    /** Agralon card: the workflow in five short steps. */
+    agralonFlow: readonly [string, string, string, string, string];
+    /** Caption for product screens that show demo content. */
+    sampleData: string;
+    /** Renvora card: three schematic steps. */
+    renvoraFlow: readonly [string, string, string];
   };
   businesses: Record<BrandId, BusinessCopy>;
   ecosystem: {
@@ -77,6 +86,12 @@ export interface Content {
     items: Record<"agrotech" | "agralon" | "sourcing" | "renvora", { kicker: string; title: string; text: string; alt: string }>;
     renvoraSteps: readonly [string, string, string, string, string];
     renvoraCaption: string;
+    /** Agralon workflow as documented on agralon.com (seven stages). */
+    agralonSteps: readonly [string, string, string, string, string, string, string];
+    agralonStepsLabel: string;
+    /** Facts shown under the Sourcing text (term + value). */
+    sourcingFacts: readonly { term: string; value: string }[];
+    statusLabel: string;
   };
   principles: {
     eyebrow: string;
