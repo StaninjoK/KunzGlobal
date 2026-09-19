@@ -33,7 +33,7 @@ export function pagePath(lang: Lang, page: PageId, hash = ""): string {
   return `${prefix}${SLUG[page]}${hash}`;
 }
 
-export const BRANDS = ["agrotech", "agralon", "sourcing", "renvora", "versicherung", "akquise"] as const;
+export const BRANDS = ["agrotech", "agralon", "sourcing", "renvora", "systems", "akquise", "vomando"] as const;
 export type BrandId = (typeof BRANDS)[number];
 
 export interface Brand {
@@ -49,8 +49,10 @@ export const BRAND: Record<BrandId, Brand> = {
   agralon: { id: "agralon", name: "Agralon", url: "https://agralon.com/", domain: "agralon.com" },
   sourcing: { id: "sourcing", name: "Kunz Sourcing", url: "https://kunzsourcing.com/", domain: "kunzsourcing.com" },
   renvora: { id: "renvora", name: "Renvora", url: "https://renvora.lat/", domain: "renvora.lat" },
-  versicherung: { id: "versicherung", name: "Kunz Versicherung", url: null, domain: null },
+  // kunzsystems.com and vomando.com are not published yet (checked 2026-09-19): no link until they are live.
+  systems: { id: "systems", name: "Kunz Systems", url: null, domain: null },
   akquise: { id: "akquise", name: "KunzAkquise", url: "https://kunzakquise.com/", domain: "kunzakquise.com" },
+  vomando: { id: "vomando", name: "Vomando", url: null, domain: null },
 };
 
 export interface BrandTarget {
@@ -89,13 +91,14 @@ export const BRAND_TARGET: Record<BrandId, Record<Lang, BrandTarget> | null> = {
     de: { href: "https://renvora.lat/de", lang: "de" },
     pt: { href: "https://renvora.lat/pt", lang: "pt" },
   },
-  versicherung: null,
+  systems: null,
   akquise: {
     en: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
     es: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
     de: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
     pt: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
   },
+  vomando: null,
 };
 
 /** Contact details already published on the previous kunzglobal.com. */

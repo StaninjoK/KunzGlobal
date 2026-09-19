@@ -13,7 +13,9 @@ const routes = LANGS.flatMap((lang) => PAGES.map((page) => ({ lang, url: (lang =
 const ALLOWED_EXTERNAL = ["https://kunzagrotech.com/", "https://agralon.com/", "https://kunzsourcing.com/", "https://renvora.lat/", "https://kunzakquise.com/", "https://kunzglobal.com/"];
 
 // Confidential ventures and unprovable claims must never reach the published pages.
-const FORBIDDEN = [/kunz\s*solar/i, /kunz\s*recycling/i, /\bsolar\b/i, /recycling/i, /photovolta/i, /market[- ]leading/i, /industry leader/i, /number one/i, /marktführer/i, /líder del mercado/i, /\d+\s*\+\s*(clients|kunden|clientes)/i, /lorem ipsum/i];
+const FORBIDDEN = [/kunz\s*solar/i, /kunz\s*recycling/i, /\bsolar\b/i, /recycling/i, /photovolta/i, /market[- ]leading/i, /industry leader/i, /number one/i, /marktführer/i, /líder del mercado/i, /\d+\s*\+\s*(clients|kunden|clientes)/i, /lorem ipsum/i,
+  // Kunz Versicherung is not part of the portfolio (removed 2026-09-19)
+  /versicherung/i, /insurance/i, /\bseguros?\b/i, /risk solutions/i];
 
 const read = (url) => fs.readFileSync(path.join(dist, url.endsWith("/") ? url + "index.html" : url), "utf8");
 const exists = (url) => fs.existsSync(path.join(dist, url.endsWith("/") ? url + "index.html" : url));
@@ -82,9 +84,27 @@ test("portfolio cards name the offer and a specific next step", () => {
   for (const lang of LANGS) {
     const html = read(lang === "en" ? "/" : `/${lang}/`);
     const portfolio = html.slice(html.indexOf('id="businesses"'), html.indexOf('id="ecosystem"'));
-    assert.equal((portfolio.match(/<article class="card /g) || []).length, 6, `${lang}: six cards`);
-    assert.equal((portfolio.match(/class="brand-link card__link"/g) || []).length, 6, `${lang}: one primary link per card`);
+    assert.equal((portfolio.match(/<article class="card /g) || []).length, 7, `${lang}: seven cards`);
+    assert.equal((portfolio.match(/class="brand-link card__link"/g) || []).length, 7, `${lang}: one primary link per card`);
     assert.ok(!generic.test(visibleText(html)), `${lang}: generic link label left`);
+  }
+});
+
+test("seven active businesses everywhere: portfolio, directory, ecosystem, contact form", () => {
+  const brands = ["Kunz Agrotech", "Agralon", "Kunz Sourcing", "Renvora", "Kunz Systems", "KunzAkquise", "Vomando"];
+  for (const lang of LANGS) {
+    const prefix = lang === "en" ? "/" : `/${lang}/`;
+    const home = read(prefix);
+    const eco = home.slice(home.indexOf('id="ecosystem"'), home.indexOf('id="ventures"'));
+    assert.equal((eco.match(/data-eco-node="/g) || []).length, 8, `${lang}: seven businesses + Future Ventures in the ecosystem`);
+    const directory = read(prefix + "businesses/");
+    assert.equal((directory.match(/<article class="entry"/g) || []).length, 7, `${lang}: seven directory entries`);
+    const select = read(prefix + "contact/").match(/<select[\s\S]*?<\/select>/)[0];
+    for (const b of brands) {
+      assert.ok(eco.includes(`>${b}<`), `${lang}: ${b} missing in ecosystem`);
+      assert.ok(directory.includes(`>${b}</h2>`), `${lang}: ${b} missing in directory`);
+      assert.ok(select.includes(`>${b}</option>`), `${lang}: ${b} missing in contact form`);
+    }
   }
 });
 

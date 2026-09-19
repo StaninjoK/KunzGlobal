@@ -181,7 +181,18 @@ export function Home({ ctx }: { ctx: PageContext }) {
               id="sourcing"
               ctx={ctx}
               variant="photo card--c"
-              media={<CardPhoto wide={{ name: "sourcing-warehouse", widths: [800, 1600], w: 1600, h: 747, fallback: 1600 }} narrow={{ name: "sourcing-warehouse-tall", widths: [480, 747], w: 747, h: 1600, fallback: 747 }} />}
+              media={
+                <>
+                  <Picture name="sourcing-beef" widths={[800, 1122]} fallback={1122} alt="" sizes="(min-width: 900px) 58vw, 100vw" width={1122} height={842} />
+                  <span className="card__tag">{t.portfolio.illustration}</span>
+                </>
+              }
+              visual={
+                <figure className="card__inset">
+                  <Picture name="sourcing-tops" widths={[800]} fallback={1600} alt="" sizes="220px" width={1600} height={747} />
+                  <figcaption>{t.businesses.sourcing.focus[2]}</figcaption>
+                </figure>
+              }
             />
             <Card
               id="renvora"
@@ -201,8 +212,78 @@ export function Home({ ctx }: { ctx: PageContext }) {
                 </figure>
               }
             />
-            <Card id="versicherung" ctx={ctx} variant="plain card--e" />
-            <Card id="akquise" ctx={ctx} variant="plain card--f" />
+            <Card
+              id="systems"
+              ctx={ctx}
+              variant="dark card--top card--e"
+              visual={
+                <figure className="card__system">
+                  <div className="card__window" aria-hidden="true">
+                    <span className="card__window-bar">
+                      <i />
+                      <i />
+                      <i />
+                    </span>
+                    <ul>
+                      {t.portfolio.systemsModules.map((m) => (
+                        <li key={m}>
+                          <strong>{m}</strong>
+                          <i />
+                          <i />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <figcaption>{t.portfolio.systemsCaption}</figcaption>
+                </figure>
+              }
+            />
+            <Card
+              id="akquise"
+              ctx={ctx}
+              variant="plain card--top card--f"
+              visual={
+                <figure className="card__ledger">
+                  <ol>
+                    {t.portfolio.akquiseSteps.map((step, i) => (
+                      <li key={step}>
+                        <span>{String(i + 1).padStart(2, "0")}</span>
+                        {step}
+                        <i aria-hidden="true" />
+                      </li>
+                    ))}
+                  </ol>
+                  <figcaption>{t.portfolio.akquiseCaption}</figcaption>
+                </figure>
+              }
+            />
+            <Card
+              id="vomando"
+              ctx={ctx}
+              variant="plain card--top card--g"
+              visual={
+                <figure className="card__app">
+                  <div className="card__phone" aria-hidden="true">
+                    <span className="card__phone-notch" />
+                    <p className="card__phone-course">{t.portfolio.vomando.course}</p>
+                    <p className="card__phone-lesson">{t.portfolio.vomando.lesson}</p>
+                    <div className="card__phone-row">
+                      <span>{t.portfolio.vomando.neutral}</span>
+                      <b lang="es">¿Puedes ayudarme?</b>
+                    </div>
+                    <div className="card__phone-row is-local">
+                      <span>{t.portfolio.vomando.local}</span>
+                      <b lang="es">¿Me podés dar una mano?</b>
+                      <em>{t.portfolio.vomando.meaning}</em>
+                    </div>
+                    <span className="card__phone-progress">
+                      <i />
+                    </span>
+                  </div>
+                  <figcaption>{t.portfolio.vomando.caption}</figcaption>
+                </figure>
+              }
+            />
           </div>
           <p className="portfolio__more" data-reveal>
             <a className="text-link" href={pagePath(lang, "businesses")}>
@@ -280,7 +361,9 @@ export function Home({ ctx }: { ctx: PageContext }) {
 
           <article className="feature">
             <div className="feature__media feature__media--photo" data-reveal="media">
-              <Picture className="parallax" name="sourcing-tops" widths={[800, 1600]} fallback={1600} alt={f.sourcing.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={1600} height={747} />
+              <Picture className="parallax" name="sourcing-beef" widths={[800, 1122]} fallback={1122} alt={f.sourcing.alt} sizes="(min-width: 1000px) 62vw, 100vw" width={1122} height={842} />
+              <span className="card__tag feature__tag">{t.portfolio.illustration}</span>
+              <Picture className="feature__inset" name="sourcing-tops" widths={[800]} fallback={1600} alt="" sizes="(min-width: 1000px) 18vw, 34vw" width={1600} height={747} />
             </div>
             <div className="feature__body">
               <p className="feature__kicker" data-reveal>

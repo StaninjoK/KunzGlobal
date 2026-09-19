@@ -10,7 +10,7 @@ export const de: Content = {
     businesses: {
       title: "Unsere Unternehmen — Kunz Global",
       description:
-        "Das Portfolio von Kunz Global: Kunz Agrotech, Agralon, Kunz Sourcing, Renvora, Kunz Versicherung und KunzAkquise — eigenständige Marken, eine verbundene Gruppe.",
+        "Das Portfolio von Kunz Global: Kunz Agrotech, Agralon, Kunz Sourcing, Renvora, Kunz Systems, KunzAkquise und Vomando — eigenständige Marken, eine verbundene Gruppe.",
     },
     about: {
       title: "Über uns — Kunz Global",
@@ -43,7 +43,7 @@ export const de: Content = {
     lead: "Kunz Global entwickelt und betreibt spezialisierte Unternehmen in Landwirtschaft, Technologie, internationalem Handel und Business Services.",
     ctaPrimary: "Unsere Unternehmen",
     ctaSecondary: "Über Kunz Global",
-    sectors: ["Landwirtschaft", "Software", "Internationaler Handel", "Vertriebstechnologie", "Versicherung", "Business Services"],
+    sectors: ["Landwirtschaft", "Software", "Internationaler Handel", "Vertriebstechnologie", "Sprachtechnologie", "Business Services"],
     networkAlt: "Abstraktes Netzwerk: Kunz Global im Zentrum, verbunden mit seinen Geschäftsbereichen.",
     scroll: "Scrollen",
   },
@@ -54,21 +54,27 @@ export const de: Content = {
     body: "Jedes Unternehmen hat seine eigene Marke, seinen eigenen Markt und seinen eigenen Fokus. Die Gruppe verbindet sie — mit gemeinsamer Technologie, operativer Erfahrung und internationalem Blick.",
     facts: [
       { label: "Standort", value: "San José, Uruguay" },
-      { label: "Portfolio", value: "Sechs aktive Unternehmen" },
-      { label: "Branchen", value: "Landwirtschaft · Technologie · Handel · Versicherung · Vertrieb" },
+      { label: "Portfolio", value: "Sieben aktive Unternehmen" },
+      { label: "Branchen", value: "Landwirtschaft · Technologie · Handel · Vertrieb" },
       { label: "Arbeitssprachen", value: "English · Español · Deutsch · Português" },
     ],
   },
   portfolio: {
     eyebrow: "Portfolio",
     title: ["Unsere", "Unternehmen."],
-    lead: "Sechs Marken, jede spezialisiert auf ihr Feld. Aufgebaut und betrieben innerhalb der Gruppe.",
+    lead: "Sieben Marken, jede spezialisiert auf ihr Feld. Aufgebaut und betrieben innerhalb der Gruppe.",
     viewAll: "Alle Unternehmen im Detail",
     external: "öffnet in neuem Tab",
     siteLang: { en: "Website auf Englisch", es: "Website auf Spanisch", de: "Website auf Deutsch", pt: "Website auf Portugiesisch" },
     agralonFlow: ["Anfrage", "Einsatzplanung", "Einsatz", "Bericht", "Rechnung"],
     sampleData: "Produktansicht mit Beispieldaten",
     renvoraFlow: ["Recherche", "Ansprache", "Follow-up"],
+    illustration: "Illustration",
+    systemsModules: ["Webplattformen", "Mobile Apps", "Automatisierung", "KI-Workflows"],
+    systemsCaption: "Schematische Darstellung",
+    akquiseSteps: ["Zielkundenliste", "Erstansprache", "Termin"],
+    akquiseCaption: "Ablauf der Dienstleistung",
+    vomando: { course: "Spanisch · Uruguay", lesson: "Alltagssätze", neutral: "Neutral", local: "Uruguay", meaning: "Kannst du mir helfen?", caption: "Schematische App-Ansicht" },
   },
   businesses: {
     agrotech: {
@@ -80,7 +86,7 @@ export const de: Content = {
       focus: ["Pflanzenschutz", "Aussaat aus der Luft", "Fester Dünger", "Schwer zugängliche Flächen"],
     },
     agralon: {
-      category: "Softwareplattform",
+      category: "Agrarsoftware",
       short: "Die Betriebsplattform für Agrar-Dienstleister und Drohnenbetreiber — von der ersten Anfrage bis zur Rechnung.",
       offer: "Software für Agrar-Dienstleister und Drohnenbetreiber: ein Ablauf von der Kundenanfrage über Einsatzplanung und Feldarbeit bis zu Bericht und Rechnung.",
       cta: "Agralon entdecken",
@@ -90,11 +96,11 @@ export const de: Content = {
     },
     sourcing: {
       category: "Internationaler Handel & Sourcing",
-      short: "Verbindet Lieferanten in Uruguay mit internationalen Käufern. Aktueller Schwerpunkt: Wolle und Agrarrohstoffe.",
-      offer: "Verbindet uruguayische Lieferanten mit internationalen B2B-Käufern. Aktueller Schwerpunkt: Wolle, als Kammzug und gewaschene Wolle auf Bestellung gefertigt.",
+      short: "Rindfleisch und Merinowolle aus Uruguay für internationale B2B-Käufer, am Ursprung beschafft und als strukturierter Handel abgewickelt.",
+      offer: "Weiderindfleisch aus Uruguay (grasgefüttert) für Importeure, Großhändler und Verarbeiter, bezogen über EU-zugelassene Exportbetriebe. Ergänzt durch Merinowolle.",
       cta: "Sourcing-Angebot ansehen",
-      long: "Kunz Sourcing ist das Handelsunternehmen der Gruppe und der Ansprechpartner der Käufer in Uruguay. Der am weitesten entwickelte Bereich ist Wolle: Kammzug und gewaschene Wolle, gegen bestätigte Aufträge in einer etablierten uruguayischen Kämmerei gefertigt und mit Laborzertifikat geliefert. Kunz Sourcing stimmt die Spezifikation ab und koordiniert Dokumente und Verschiffung. Rindfleisch wird als zweiter Bereich aufgebaut.",
-      focus: ["Kammzug", "Gewaschene Wolle", "Export aus Uruguay", "B2B-Handel"],
+      long: "Kunz Sourcing ist das Handelsunternehmen der Gruppe und der Ansprechpartner der Käufer in Uruguay. Der Schwerpunkt ist Rindfleisch: Premium-Cuts, Verarbeitungsware und Industriefleisch, gekühlt oder gefroren, nach Spezifikation über EU-zugelassene uruguayische Exportbetriebe beschafft; Betrieb, Spezifikation und Dokumente werden vor einem Angebot bestätigt. Merinowolle ergänzt das Sortiment: Kammzug und gewaschene Wolle, auf Bestellung in einer etablierten uruguayischen Kämmerei gefertigt.",
+      focus: ["Weiderindfleisch", "Premium- und Verarbeitungsware", "Merinowolle", "Export aus Uruguay"],
     },
     renvora: {
       category: "Vertriebstechnologie",
@@ -105,13 +111,14 @@ export const de: Content = {
       focus: ["Interessenten-Recherche", "Ansprache", "Follow-ups", "Vertriebspipeline"],
       status: "In Entwicklung · Early Access",
     },
-    versicherung: {
-      category: "Versicherung & Risikolösungen",
-      short: "Der Versicherungsbereich im Kunz-Ökosystem — gebaut auf Vertrauen, Kontinuität und langfristige Kundenbeziehungen.",
-      offer: "Der Versicherungsbereich der Kunz-Gruppe. Angaben zum aktuellen Angebot erhalten Sie auf Anfrage; Kunz Global leitet Anfragen persönlich weiter.",
-      cta: "Kontakt zum Versicherungsbereich",
-      long: "Kunz Versicherung ist der Versicherungsbereich innerhalb der Kunz-Gruppe. Angaben zum aktuellen Angebot erhalten Sie auf Anfrage. Bitte richten Sie Anfragen an Kunz Global; sie werden persönlich weitergeleitet.",
-      focus: ["Versicherung", "Anfragen über Kunz Global"],
+    systems: {
+      category: "Software, Apps & Automatisierung",
+      short: "Individuelle Software, Webplattformen, mobile Apps und Automatisierung für Unternehmen, dazu die Technologie hinter den eigenen Produkten der Gruppe.",
+      offer: "Individuelle Software, Webplattformen, mobile Apps und Prozessautomatisierung, auch mit KI-gestützten Abläufen. Ausgerichtet daran, wie ein Unternehmen tatsächlich arbeitet.",
+      cta: "Projekt anfragen",
+      long: "Kunz Systems ist der Bereich für Software und digitale Entwicklung der Gruppe. Das Unternehmen konzipiert und entwickelt individuelle Software, Webplattformen, mobile Apps, Unternehmenswebsites und interne Business-Tools und automatisiert wiederkehrende Prozesse, auch mit KI-gestützten Abläufen. Die eigenen Produkte der Gruppe, darunter Agralon und Renvora, entstehen bei Kunz Systems. Die eigene Website ist in Vorbereitung; Anfragen laufen über Kunz Global.",
+      focus: ["Individuelle Software", "Webplattformen & Websites", "Mobile Apps", "Prozess- & KI-Automatisierung", "Interne Business-Tools"],
+      status: "Website in Vorbereitung",
     },
     akquise: {
       category: "B2B-Vertrieb & Business Development",
@@ -120,6 +127,15 @@ export const de: Content = {
       cta: "Vertriebsleistungen ansehen",
       long: "KunzAkquise übernimmt den Outbound-Vertrieb für B2B-Unternehmen als Dienstleistung: Zielkundenprofil, Recherche von Unternehmen und Ansprechpartnern, telefonische Erstansprache nach Freigabe, E-Mail-Kampagnen mit Follow-ups, Bedarfsqualifizierung und Terminvereinbarung. Übergeben werden die vereinbarten Kontaktdaten, Gesprächsnotizen oder Termine. Während Renvora eine Software ist, die ein Team selbst nutzt, erledigt KunzAkquise die Arbeit für den Kunden.",
       focus: ["Lead-Recherche", "Telefonakquise", "E-Mail-Ansprache", "Terminvereinbarung"],
+    },
+    vomando: {
+      category: "Technologie für Sprachenlernen",
+      short: "Eine mobile App, mit der man eine Sprache so lernt, wie sie in einem bestimmten Land gesprochen wird. Erster Kurs: Spanisch, wie es in Uruguay gesprochen wird.",
+      offer: "Eine mobile App, mit der man eine Sprache so lernt, wie sie in einem bestimmten Land tatsächlich gesprochen wird: strukturierte Lektionen, Sprechpraxis und regionaler Sprachgebrauch. Erster Kurs: Spanisch · Uruguay.",
+      cta: "Anfrage über Kunz Global",
+      long: "Vomando ist das Consumer-Technologieprodukt der Gruppe für das Sprachenlernen. Es vermittelt nicht nur, was grammatikalisch korrekt ist, sondern auch, was natürlich klingt und was vor Ort üblich ist, von neutral bis umgangssprachlich. Der erste Kurs ist Spanisch, wie es in Uruguay gesprochen wird; weitere Sprachen und regionale Varianten sind geplant. Die App ist für strukturierte Lektionen, Sprechpraxis und KI-gestützte Gespräche ausgelegt und befindet sich in Entwicklung.",
+      focus: ["Mobile App", "Strukturierte Lektionen", "Sprechpraxis", "Regionale Sprache"],
+      status: "In Entwicklung",
     },
   },
   ecosystem: {
@@ -150,9 +166,9 @@ export const de: Content = {
       },
       sourcing: {
         kicker: "Kunz Sourcing",
-        title: "Wolle aus Uruguay, auf Bestellung gefertigt.",
-        text: "Kammzug und gewaschene Wolle werden gegen bestätigte Aufträge in einer etablierten Kämmerei in Uruguay gefertigt. Kunz Sourcing stimmt die Spezifikation mit dem Käufer ab und koordiniert Dokumente und Verschiffung.",
-        alt: "Kannen mit gekämmtem Wollkammzug in einer Kämmerei in Uruguay.",
+        title: "Rindfleisch und Merinowolle aus Uruguay.",
+        text: "Kunz Sourcing beschafft Rindfleisch nach Spezifikation des Käufers über EU-zugelassene uruguayische Exportbetriebe und Merinowolle als Kammzug und gewaschene Wolle, auf Bestellung gefertigt. Spezifikation, Dokumente und Verschiffung werden von Uruguay aus koordiniert.",
+        alt: "Illustration: Rinder auf der Weide in Uruguay; eingesetztes Foto: gekämmter Wollkammzug in einer uruguayischen Kämmerei.",
       },
       renvora: {
         kicker: "Renvora",
@@ -166,9 +182,9 @@ export const de: Content = {
     agralonSteps: ["Anfrage", "Koordination", "Einsatzplanung", "Einsatz", "Bericht", "Rechnung", "Zahlung"],
     agralonStepsLabel: "Der Agralon-Ablauf",
     sourcingFacts: [
-      { term: "Produktformen", value: "Kammzug · gewaschene Wolle" },
-      { term: "Feinheit", value: "17–30 µm, übliche Spanne" },
-      { term: "Lieferung", value: "FOB Montevideo · CIF auf Anfrage" },
+      { term: "Rindfleisch", value: "Premium, Verarbeitungs- und Industrieware · gekühlt oder gefroren" },
+      { term: "Bezug", value: "EU-zugelassene Exportbetriebe in Uruguay" },
+      { term: "Merinowolle", value: "Kammzug · gewaschene Wolle, auf Bestellung" },
     ],
     statusLabel: "Status",
   },
@@ -208,7 +224,7 @@ export const de: Content = {
   },
   businessesPage: {
     eyebrow: "Portfolio",
-    title: ["Sechs Unternehmen.", "Eine Gruppe."],
+    title: ["Sieben Unternehmen.", "Eine Gruppe."],
     lead: "Jedes Unternehmen im Portfolio ist spezialisiert, tritt unter eigener Marke auf und wird innerhalb von Kunz Global betrieben.",
     focusLabel: "Schwerpunkte",
     futureLink: "Was als Nächstes kommt",
@@ -220,7 +236,7 @@ export const de: Content = {
     story: [
       { title: "Wo es begann", text: "Am Anfang standen ein europäischer Hintergrund und die Entscheidung, in Uruguay aufzubauen — einem Land mit starker Landwirtschaft, stabilen Institutionen und Raum für neue Geschäftsmodelle." },
       { title: "Vom Betrieb zur Technologie", text: "Die ersten Unternehmen waren operativ: Agrardienstleistungen im Feld und Handel mit Agrarprodukten. Die Arbeit in diesen Branchen zeigte, wo Software fehlt. Genau daraus ist Agralon entstanden." },
-      { title: "Eine Gruppe, mehrere Spezialisten", text: "Vertrieb und Business Development wurden zu eigenen Unternehmen, dazu kamen Versicherung und Vertriebstechnologie. Heute vereint Kunz Global Landwirtschaft, Software, internationalen Handel und Business Services unter einem Dach." },
+      { title: "Eine Gruppe, mehrere Spezialisten", text: "Vertrieb und Business Development wurden zu eigenen Unternehmen, dazu kamen Vertriebstechnologie, Softwareentwicklung und Sprachlerntechnologie. Heute vereint Kunz Global Landwirtschaft, Software, internationalen Handel und Business Services unter einem Dach." },
       { title: "Was als Nächstes kommt", text: "Die Gruppe steht noch am Anfang einer längeren Entwicklung. Neue Ventures kommen hinzu, wenn es eine echte Chance gibt — und die Kapazität, sie gut umzusetzen." },
     ],
     approachTitle: "Wie wir arbeiten",
@@ -233,8 +249,8 @@ export const de: Content = {
     },
     facts: [
       { label: "Sitz", value: "San José, Uruguay" },
-      { label: "Unternehmen", value: "Sechs aktive Marken" },
-      { label: "Felder", value: "Landwirtschaft, Software, Handel, Versicherung, Vertrieb" },
+      { label: "Unternehmen", value: "Sieben aktive Marken" },
+      { label: "Felder", value: "Landwirtschaft, Software, Handel, Vertrieb" },
     ],
   },
   contactPage: {

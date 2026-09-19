@@ -16,6 +16,7 @@ const SRC = {
   platform: (lang) => `${ROOT}/KunzAgrotech/KunzAgrotech-Repo/source/agralon/plataforma-${lang}.png`,
   // Original photos from the wool supplier's mill (July 2026), not frames from a video.
   tops: (time) => `${ROOT}/Kunz Sourcing/Bilder von Tops Produktion/WhatsApp Image 2026-07-10 at ${time}.jpeg`,
+  cattle: `${ROOT}/Kunz Sourcing/Webseite/Webseite Aktuell/Images/Weiderinder.png`,
   portrait: path.resolve("public/images/geschaeftsfuehrer.jpg"),
   logo: `${ROOT}/E-Mail-Signatur/kunzglobal-logo-transparent-hochaufloesend.png`,
 };
@@ -68,6 +69,13 @@ for (const lang of ["en", "es", "de", "pt"]) {
 await responsive("sourcing-warehouse", SRC.tops("13.47.56 (1)"), [800, 1600], { fallback: 1600, quality: 76 });
 await responsive("sourcing-warehouse-tall", SRC.tops("13.47.56 (2)"), [480, 747], { fallback: 747, quality: 76 });
 await responsive("sourcing-tops", SRC.tops("13.47.52"), [800, 1600], { fallback: 1600, quality: 76 });
+// Beef: rendered illustration from the previous kunzsourcing.com (no real photos yet); always shown with an "Illustration" label.
+// The crop leaves out the old logo at the top left.
+await responsive("sourcing-beef", SRC.cattle, [800, 1122], {
+  fallback: 1122,
+  quality: 76,
+  prepare: (img) => img.extract({ left: 0, top: 500, width: 1122, height: 842 }),
+});
 await responsive("stanley-kunz", SRC.portrait, [400, 800], {
   fallback: 800,
   prepare: (img) => img.resize({ width: 800, height: 1000, fit: "cover", position: "attention" }),

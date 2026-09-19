@@ -10,7 +10,7 @@ export const en: Content = {
     businesses: {
       title: "Our Businesses — Kunz Global",
       description:
-        "The Kunz Global portfolio: Kunz Agrotech, Agralon, Kunz Sourcing, Renvora, Kunz Versicherung and KunzAkquise — independent brands, one connected group.",
+        "The Kunz Global portfolio: Kunz Agrotech, Agralon, Kunz Sourcing, Renvora, Kunz Systems, KunzAkquise and Vomando — independent brands, one connected group.",
     },
     about: {
       title: "About — Kunz Global",
@@ -43,7 +43,7 @@ export const en: Content = {
     lead: "Kunz Global develops and operates specialised businesses across agriculture, technology, international trade and business services.",
     ctaPrimary: "Explore our businesses",
     ctaSecondary: "About Kunz Global",
-    sectors: ["Agriculture", "Software", "International Trade", "Sales Technology", "Insurance", "Business Services"],
+    sectors: ["Agriculture", "Software", "International Trade", "Sales Technology", "Language Technology", "Business Services"],
     networkAlt: "Abstract network: Kunz Global at the centre, connected to its business areas.",
     scroll: "Scroll",
   },
@@ -54,21 +54,27 @@ export const en: Content = {
     body: "Each business has its own brand, its own market and its own focus. The group connects them — with shared technology, operational experience and an international outlook.",
     facts: [
       { label: "Base", value: "San José, Uruguay" },
-      { label: "Portfolio", value: "Six active businesses" },
-      { label: "Sectors", value: "Agriculture · Technology · Trade · Insurance · Sales" },
+      { label: "Portfolio", value: "Seven active businesses" },
+      { label: "Sectors", value: "Agriculture · Technology · Trade · Sales" },
       { label: "Working languages", value: "English · Español · Deutsch · Português" },
     ],
   },
   portfolio: {
     eyebrow: "Portfolio",
     title: ["Our", "businesses."],
-    lead: "Six brands, each specialised in its field. Built, owned and operated within the group.",
+    lead: "Seven brands, each specialised in its field. Built, owned and operated within the group.",
     viewAll: "All businesses in detail",
     external: "opens in a new tab",
     siteLang: { en: "site in English", es: "site in Spanish", de: "site in German", pt: "site in Portuguese" },
     agralonFlow: ["Enquiry", "Scheduling", "Field work", "Report", "Invoice"],
     sampleData: "Product view with sample data",
     renvoraFlow: ["Research", "Outreach", "Follow-up"],
+    illustration: "Illustration",
+    systemsModules: ["Web platforms", "Mobile apps", "Automation", "AI workflows"],
+    systemsCaption: "Schematic view",
+    akquiseSteps: ["Target list", "First contact", "Appointment"],
+    akquiseCaption: "Service process",
+    vomando: { course: "Spanish · Uruguay", lesson: "Everyday phrases", neutral: "Neutral", local: "Uruguay", meaning: "Can you give me a hand?", caption: "Schematic app view" },
   },
   businesses: {
     agrotech: {
@@ -80,7 +86,7 @@ export const en: Content = {
       focus: ["Crop protection spraying", "Broadcast seeding", "Solid fertiliser", "Hard-to-reach areas"],
     },
     agralon: {
-      category: "Software Platform",
+      category: "Agricultural Software",
       short: "The operating platform for agricultural service providers and drone operators — from the first enquiry to the invoice.",
       offer: "Software for agricultural service companies and drone operators: one workflow from the customer's enquiry through scheduling and field work to report and invoice.",
       cta: "Discover Agralon",
@@ -90,11 +96,11 @@ export const en: Content = {
     },
     sourcing: {
       category: "International Trade & Sourcing",
-      short: "Connects suppliers in Uruguay with international buyers. Current focus: wool and agricultural commodities.",
-      offer: "Connects Uruguayan suppliers with international B2B buyers. Current focus: wool, as combed tops and scoured wool produced to order.",
+      short: "Uruguayan beef and Merino wool for international B2B buyers, sourced at origin and handled as structured trade.",
+      offer: "Pasture-raised, grass-fed beef from Uruguay for importers, wholesalers and processors, sourced through EU-approved export plants. Complemented by Merino wool.",
       cta: "View sourcing offer",
-      long: "Kunz Sourcing is the group's trading business and the buyer's counterpart in Uruguay. Its most developed area is wool: combed tops and scoured wool, produced against confirmed orders at an established Uruguayan combing mill and shipped with a laboratory certificate. Kunz Sourcing agrees the specification and coordinates documentation and shipment. Beef is being built up as a second area.",
-      focus: ["Wool tops", "Scoured wool", "Export from Uruguay", "B2B trade"],
+      long: "Kunz Sourcing is the group's trading business and the buyer's counterpart in Uruguay. Its focus is beef: premium cuts, processing cuts and industrial beef, chilled or frozen, sourced to specification through EU-approved Uruguayan export plants; plant, specification and documentation are confirmed before a quote. Merino wool complements the range: combed tops and scoured wool, produced to order at an established Uruguayan combing mill.",
+      focus: ["Grass-fed beef", "Premium & processing cuts", "Merino wool", "Export from Uruguay"],
     },
     renvora: {
       category: "Sales Technology",
@@ -105,13 +111,14 @@ export const en: Content = {
       focus: ["Prospect research", "Outreach", "Follow-ups", "Sales pipeline"],
       status: "In development · early access",
     },
-    versicherung: {
-      category: "Insurance & Risk Solutions",
-      short: "The insurance business within the Kunz ecosystem — built on trust, continuity and long-term client relationships.",
-      offer: "The insurance business of the Kunz group. Details of the current offer are provided on request; Kunz Global passes enquiries on personally.",
-      cta: "Contact the insurance business",
-      long: "Kunz Versicherung is the insurance business within the Kunz group. Details of the current offer are provided on request. Please send enquiries via Kunz Global; they are passed on personally.",
-      focus: ["Insurance", "Enquiries via Kunz Global"],
+    systems: {
+      category: "Software, Apps & Automation",
+      short: "Custom software, web platforms, mobile apps and automation for businesses, and the technology behind the group's own products.",
+      offer: "Custom software, web platforms, mobile apps and process automation, including AI-supported workflows. Built around how a business actually operates.",
+      cta: "Discuss a project",
+      long: "Kunz Systems is the group's software and digital engineering business. It designs and builds custom software, web platforms, mobile apps, company websites and internal business tools, and automates recurring processes, including AI-supported workflows. The group's own products, among them Agralon and Renvora, are built by Kunz Systems. Its own website is in preparation; enquiries are handled through Kunz Global.",
+      focus: ["Custom software", "Web platforms & websites", "Mobile apps", "Process & AI automation", "Internal business tools"],
+      status: "Website in preparation",
     },
     akquise: {
       category: "B2B Sales & Business Development",
@@ -120,6 +127,15 @@ export const en: Content = {
       cta: "View sales services",
       long: "KunzAkquise runs outbound sales for B2B companies as a service: defining the target customer profile, researching companies and contacts, first contact by phone after approval, email campaigns with follow-ups, qualification and appointment setting. Results are handed over as the agreed contact details, call notes or appointments. Where Renvora is software a team uses itself, KunzAkquise does the work for the client.",
       focus: ["Lead research", "Cold calling", "Email outreach", "Appointment setting"],
+    },
+    vomando: {
+      category: "Language Learning Technology",
+      short: "A mobile app for learning a language the way it is spoken in a specific country. First course: Spanish as spoken in Uruguay.",
+      offer: "A mobile app for learning a language the way it is actually spoken in a specific country: structured lessons, speaking practice and regional usage. First course: Spanish · Uruguay.",
+      cta: "Enquire via Kunz Global",
+      long: "Vomando is the group's consumer technology product for language learning. It teaches not only what is grammatically correct, but what sounds natural and what is common locally, from neutral to casual. The first course is Spanish as spoken in Uruguay; further languages and regional variants are planned. The app is designed for structured lessons, speaking practice and AI-supported conversation, and is currently in development.",
+      focus: ["Mobile app", "Structured lessons", "Speaking practice", "Regional language"],
+      status: "In development",
     },
   },
   ecosystem: {
@@ -150,9 +166,9 @@ export const en: Content = {
       },
       sourcing: {
         kicker: "Kunz Sourcing",
-        title: "Wool from Uruguay, produced to order.",
-        text: "Combed tops and scoured wool are produced against confirmed orders at an established combing mill in Uruguay. Kunz Sourcing agrees the specification with the buyer and coordinates documentation and shipment.",
-        alt: "Cans filled with combed wool tops at a combing mill in Uruguay.",
+        title: "Beef and Merino wool from Uruguay.",
+        text: "Kunz Sourcing sources beef to the buyer's specification through EU-approved Uruguayan export plants, and Merino wool as combed tops and scoured wool produced to order. Specification, documentation and shipment are coordinated from Uruguay.",
+        alt: "Illustration: cattle on pasture in Uruguay; inset photo: combed wool tops at a Uruguayan combing mill.",
       },
       renvora: {
         kicker: "Renvora",
@@ -166,9 +182,9 @@ export const en: Content = {
     agralonSteps: ["Enquiry", "Coordination", "Scheduling", "Field work", "Report", "Invoice", "Payment"],
     agralonStepsLabel: "The Agralon workflow",
     sourcingFacts: [
-      { term: "Product forms", value: "Wool tops · scoured wool" },
-      { term: "Fineness", value: "17–30 µm, usual range" },
-      { term: "Delivery", value: "FOB Montevideo · CIF on request" },
+      { term: "Beef", value: "Premium, processing and industrial cuts · chilled or frozen" },
+      { term: "Supply", value: "EU-approved Uruguayan export plants" },
+      { term: "Merino wool", value: "Wool tops · scoured wool, produced to order" },
     ],
     statusLabel: "Status",
   },
@@ -208,7 +224,7 @@ export const en: Content = {
   },
   businessesPage: {
     eyebrow: "Portfolio",
-    title: ["Six businesses.", "One group."],
+    title: ["Seven businesses.", "One group."],
     lead: "Each company in the portfolio is specialised, independently branded and operated within Kunz Global.",
     focusLabel: "Focus",
     futureLink: "See what comes next",
@@ -220,7 +236,7 @@ export const en: Content = {
     story: [
       { title: "Where it started", text: "Kunz Global began with a European background and a decision to build in Uruguay — a country with strong agriculture, stable institutions and room for new business models." },
       { title: "From operations to technology", text: "The first businesses were operational: agricultural services in the field and trade in agricultural products. Working in these industries showed where software was missing. Agralon grew out of exactly that." },
-      { title: "One group, several specialists", text: "Sales and business development became businesses of their own, alongside insurance and sales technology. Today Kunz Global combines agriculture, software, international trade and business services under one roof." },
+      { title: "One group, several specialists", text: "Sales and business development became businesses of their own, followed by sales technology, software engineering and language-learning technology. Today Kunz Global combines agriculture, software, international trade and business services under one roof." },
       { title: "What comes next", text: "The group is still at the beginning of a longer development. New ventures are added when there is a real opportunity and the capacity to execute it well." },
     ],
     approachTitle: "How we work",
@@ -233,8 +249,8 @@ export const en: Content = {
     },
     facts: [
       { label: "Registered office", value: "San José, Uruguay" },
-      { label: "Businesses", value: "Six active brands" },
-      { label: "Fields", value: "Agriculture, software, trade, insurance, sales" },
+      { label: "Businesses", value: "Seven active brands" },
+      { label: "Fields", value: "Agriculture, software, trade, sales" },
     ],
   },
   contactPage: {

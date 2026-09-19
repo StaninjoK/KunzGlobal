@@ -10,7 +10,7 @@ export const pt: Content = {
     businesses: {
       title: "Nossas empresas — Kunz Global",
       description:
-        "O portfólio da Kunz Global: Kunz Agrotech, Agralon, Kunz Sourcing, Renvora, Kunz Versicherung e KunzAkquise — marcas independentes, um grupo conectado.",
+        "O portfólio da Kunz Global: Kunz Agrotech, Agralon, Kunz Sourcing, Renvora, Kunz Systems, KunzAkquise e Vomando — marcas independentes, um grupo conectado.",
     },
     about: {
       title: "Sobre — Kunz Global",
@@ -43,7 +43,7 @@ export const pt: Content = {
     lead: "A Kunz Global desenvolve e opera empresas especializadas em agricultura, tecnologia, comércio internacional e serviços para empresas.",
     ctaPrimary: "Conhecer nossas empresas",
     ctaSecondary: "Sobre a Kunz Global",
-    sectors: ["Agricultura", "Software", "Comércio internacional", "Tecnologia de vendas", "Seguros", "Serviços para empresas"],
+    sectors: ["Agricultura", "Software", "Comércio internacional", "Tecnologia de vendas", "Tecnologia linguística", "Serviços para empresas"],
     networkAlt: "Rede abstrata: a Kunz Global no centro, conectada às suas áreas de negócio.",
     scroll: "Rolar",
   },
@@ -54,21 +54,27 @@ export const pt: Content = {
     body: "Cada empresa tem sua própria marca, seu próprio mercado e seu próprio foco. O grupo as conecta — com tecnologia compartilhada, experiência operacional e visão internacional.",
     facts: [
       { label: "Base", value: "San José, Uruguai" },
-      { label: "Portfólio", value: "Seis empresas ativas" },
-      { label: "Setores", value: "Agricultura · Tecnologia · Comércio · Seguros · Vendas" },
+      { label: "Portfólio", value: "Sete empresas ativas" },
+      { label: "Setores", value: "Agricultura · Tecnologia · Comércio · Vendas" },
       { label: "Idiomas de trabalho", value: "English · Español · Deutsch · Português" },
     ],
   },
   portfolio: {
     eyebrow: "Portfólio",
     title: ["Nossas", "empresas."],
-    lead: "Seis marcas, cada uma especializada em sua área. Construídas e operadas dentro do grupo.",
+    lead: "Sete marcas, cada uma especializada em sua área. Construídas e operadas dentro do grupo.",
     viewAll: "Todas as empresas em detalhe",
     external: "abre em uma nova aba",
     siteLang: { en: "site em inglês", es: "site em espanhol", de: "site em alemão", pt: "site em português" },
     agralonFlow: ["Consulta", "Planejamento", "Aplicação", "Relatório", "Fatura"],
     sampleData: "Visão do produto com dados de exemplo",
     renvoraFlow: ["Pesquisa", "Contato", "Follow-up"],
+    illustration: "Ilustração",
+    systemsModules: ["Plataformas web", "Apps móveis", "Automação", "Fluxos com IA"],
+    systemsCaption: "Visão esquemática",
+    akquiseSteps: ["Lista de alvos", "Primeiro contato", "Reunião"],
+    akquiseCaption: "Processo do serviço",
+    vomando: { course: "Espanhol · Uruguai", lesson: "Frases do dia a dia", neutral: "Neutro", local: "Uruguai", meaning: "Você pode me ajudar?", caption: "Visão esquemática do app" },
   },
   businesses: {
     agrotech: {
@@ -80,7 +86,7 @@ export const pt: Content = {
       focus: ["Pulverização", "Semeadura a lanço", "Fertilizante sólido", "Áreas de difícil acesso"],
     },
     agralon: {
-      category: "Plataforma de software",
+      category: "Software agrícola",
       short: "A plataforma operacional para prestadores de serviços agrícolas e operadores de drones — da primeira consulta à fatura.",
       offer: "Software para prestadores de serviços agrícolas e operadores de drones: um só fluxo da consulta do cliente, passando pelo planejamento e pelo trabalho em campo, até o relatório e a fatura.",
       cta: "Conhecer a Agralon",
@@ -90,11 +96,11 @@ export const pt: Content = {
     },
     sourcing: {
       category: "Comércio internacional e sourcing",
-      short: "Conecta fornecedores do Uruguai a compradores internacionais. Foco atual: lã e commodities agrícolas.",
-      offer: "Conecta fornecedores uruguaios a compradores B2B internacionais. Foco atual: lã, em tops penteados e lã lavada produzidos sob encomenda.",
+      short: "Carne bovina e lã Merino do Uruguai para compradores B2B internacionais, originadas na fonte e conduzidas como comércio estruturado.",
+      offer: "Carne bovina uruguaia de pasto (grass-fed) para importadores, atacadistas e indústrias, fornecida por frigoríficos exportadores habilitados para a UE. Complementada por lã Merino.",
       cta: "Ver a oferta de sourcing",
-      long: "A Kunz Sourcing é a empresa comercial do grupo e o interlocutor do comprador no Uruguai. Sua área mais desenvolvida é a lã: tops penteados e lã lavada, produzidos contra pedidos confirmados em uma penteadora uruguaia estabelecida e enviados com certificado de laboratório. A Kunz Sourcing acerta a especificação e coordena a documentação e o embarque. A carne bovina está sendo estruturada como segunda área.",
-      focus: ["Tops de lã", "Lã lavada", "Exportação a partir do Uruguai", "Comércio B2B"],
+      long: "A Kunz Sourcing é a empresa comercial do grupo e o interlocutor do comprador no Uruguai. Seu foco é a carne bovina: cortes premium, cortes para processamento e carne industrial, resfriada ou congelada, fornecida conforme especificação por frigoríficos exportadores uruguaios habilitados para a UE; frigorífico, especificação e documentação são confirmados antes da cotação. A lã Merino complementa a oferta: tops penteados e lã lavada, produzidos sob encomenda em uma penteadora uruguaia estabelecida.",
+      focus: ["Carne bovina de pasto", "Cortes premium e para processamento", "Lã Merino", "Exportação a partir do Uruguai"],
     },
     renvora: {
       category: "Tecnologia de vendas",
@@ -105,13 +111,14 @@ export const pt: Content = {
       focus: ["Pesquisa de prospects", "Abordagem", "Follow-ups", "Pipeline de vendas"],
       status: "Em desenvolvimento · acesso antecipado",
     },
-    versicherung: {
-      category: "Seguros e soluções de risco",
-      short: "A área de seguros dentro do ecossistema Kunz — baseada em confiança, continuidade e relações de longo prazo com os clientes.",
-      offer: "A área de seguros do grupo Kunz. Os detalhes da oferta atual são informados sob consulta; a Kunz Global encaminha as consultas pessoalmente.",
-      cta: "Falar com a área de seguros",
-      long: "A Kunz Versicherung é a área de seguros dentro do grupo Kunz. Os detalhes da oferta atual são informados sob consulta. Envie sua consulta pela Kunz Global; ela é encaminhada pessoalmente.",
-      focus: ["Seguros", "Consultas pela Kunz Global"],
+    systems: {
+      category: "Software, apps e automação",
+      short: "Software sob medida, plataformas web, apps móveis e automação para empresas, e a tecnologia por trás dos produtos do próprio grupo.",
+      offer: "Software sob medida, plataformas web, apps móveis e automação de processos, inclusive com fluxos apoiados por IA. Construídos de acordo com a forma como cada empresa trabalha.",
+      cta: "Consultar um projeto",
+      long: "A Kunz Systems é a área de software e desenvolvimento digital do grupo. Projeta e desenvolve software sob medida, plataformas web, apps móveis, sites corporativos e ferramentas internas, e automatiza processos recorrentes, inclusive com fluxos apoiados por IA. Os produtos do próprio grupo, entre eles Agralon e Renvora, são desenvolvidos pela Kunz Systems. O site próprio está em preparação; as consultas são feitas pela Kunz Global.",
+      focus: ["Software sob medida", "Plataformas e sites", "Apps móveis", "Automação de processos e IA", "Ferramentas internas"],
+      status: "Site em preparação",
     },
     akquise: {
       category: "Vendas B2B e desenvolvimento de negócios",
@@ -120,6 +127,15 @@ export const pt: Content = {
       cta: "Ver serviços de vendas",
       long: "A KunzAkquise realiza a venda outbound de empresas B2B como serviço: perfil de cliente-alvo, pesquisa de empresas e contatos, primeiro contato telefônico após aprovação, campanhas de e-mail com follow-ups, qualificação e agendamento de reuniões. São entregues os dados de contato, notas de ligações ou reuniões combinados. Enquanto a Renvora é um software que a própria equipe usa, a KunzAkquise faz o trabalho para o cliente.",
       focus: ["Pesquisa de leads", "Prospecção por telefone", "Abordagem por e-mail", "Agendamento de reuniões"],
+    },
+    vomando: {
+      category: "Tecnologia para aprender idiomas",
+      short: "Um app para aprender um idioma do jeito que ele é falado em um país específico. Primeiro curso: o espanhol do Uruguai.",
+      offer: "Um app para aprender um idioma do jeito que ele é realmente falado em um país específico: lições estruturadas, prática de fala e uso regional. Primeiro curso: Espanhol · Uruguai.",
+      cta: "Consultar pela Kunz Global",
+      long: "A Vomando é o produto de tecnologia de consumo do grupo para o aprendizado de idiomas. Ensina não só o que é gramaticalmente correto, mas também o que soa natural e o que é comum em cada lugar, do neutro ao coloquial. O primeiro curso é o espanhol do Uruguai; outros idiomas e variantes regionais estão previstos. O app foi pensado para lições estruturadas, prática de fala e conversação apoiada por IA, e está em desenvolvimento.",
+      focus: ["App móvel", "Lições estruturadas", "Prática de fala", "Idioma regional"],
+      status: "Em desenvolvimento",
     },
   },
   ecosystem: {
@@ -150,9 +166,9 @@ export const pt: Content = {
       },
       sourcing: {
         kicker: "Kunz Sourcing",
-        title: "Lã do Uruguai, produzida sob encomenda.",
-        text: "Os tops penteados e a lã lavada são produzidos contra pedidos confirmados em uma penteadora estabelecida no Uruguai. A Kunz Sourcing acerta a especificação com o comprador e coordena a documentação e o embarque.",
-        alt: "Latões com tops de lã penteada em uma penteadora no Uruguai.",
+        title: "Carne bovina e lã Merino do Uruguai.",
+        text: "A Kunz Sourcing fornece carne bovina conforme a especificação do comprador por frigoríficos exportadores uruguaios habilitados para a UE, e lã Merino em tops penteados e lã lavada produzidos sob encomenda. Especificação, documentação e embarque são coordenados a partir do Uruguai.",
+        alt: "Ilustração: gado no pasto no Uruguai; foto inserida: tops de lã penteada em uma penteadora uruguaia.",
       },
       renvora: {
         kicker: "Renvora",
@@ -166,9 +182,9 @@ export const pt: Content = {
     agralonSteps: ["Consulta", "Coordenação", "Planejamento", "Aplicação", "Relatório", "Fatura", "Pagamento"],
     agralonStepsLabel: "O fluxo da Agralon",
     sourcingFacts: [
-      { term: "Produtos", value: "Tops de lã · lã lavada" },
-      { term: "Finura", value: "17–30 µm, faixa usual" },
-      { term: "Entrega", value: "FOB Montevidéu · CIF sob consulta" },
+      { term: "Carne bovina", value: "Cortes premium, para processamento e industriais · resfriada ou congelada" },
+      { term: "Fornecimento", value: "Frigoríficos exportadores uruguaios habilitados para a UE" },
+      { term: "Lã Merino", value: "Tops de lã · lã lavada, sob encomenda" },
     ],
     statusLabel: "Status",
   },
@@ -208,7 +224,7 @@ export const pt: Content = {
   },
   businessesPage: {
     eyebrow: "Portfólio",
-    title: ["Seis empresas.", "Um grupo."],
+    title: ["Sete empresas.", "Um grupo."],
     lead: "Cada empresa do portfólio é especializada, tem marca própria e é operada dentro da Kunz Global.",
     focusLabel: "Foco",
     futureLink: "Ver o que vem a seguir",
@@ -220,7 +236,7 @@ export const pt: Content = {
     story: [
       { title: "Onde começou", text: "A Kunz Global nasceu de uma origem europeia e da decisão de construir no Uruguai — um país com agro forte, instituições estáveis e espaço para novos modelos de negócio." },
       { title: "Da operação à tecnologia", text: "As primeiras empresas foram operacionais: serviços agrícolas em campo e comércio de produtos agrícolas. Trabalhar nesses setores mostrou onde faltava software. A Agralon surgiu exatamente daí." },
-      { title: "Um grupo, vários especialistas", text: "Vendas e desenvolvimento de negócios tornaram-se empresas próprias, ao lado de seguros e tecnologia de vendas. Hoje a Kunz Global reúne agricultura, software, comércio internacional e serviços para empresas sob o mesmo teto." },
+      { title: "Um grupo, vários especialistas", text: "Vendas e desenvolvimento de negócios tornaram-se empresas próprias; depois vieram tecnologia de vendas, desenvolvimento de software e tecnologia para aprender idiomas. Hoje a Kunz Global reúne agricultura, software, comércio internacional e serviços para empresas sob o mesmo teto." },
       { title: "O que vem a seguir", text: "O grupo ainda está no começo de um desenvolvimento mais longo. Novos empreendimentos entram quando há uma oportunidade real e a capacidade de executá-la bem." },
     ],
     approachTitle: "Como trabalhamos",
@@ -233,8 +249,8 @@ export const pt: Content = {
     },
     facts: [
       { label: "Sede", value: "San José, Uruguai" },
-      { label: "Empresas", value: "Seis marcas ativas" },
-      { label: "Áreas", value: "Agricultura, software, comércio, seguros, vendas" },
+      { label: "Empresas", value: "Sete marcas ativas" },
+      { label: "Áreas", value: "Agricultura, software, comércio, vendas" },
     ],
   },
   contactPage: {

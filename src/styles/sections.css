@@ -406,7 +406,7 @@
   object-position: 12% 0;
 }
 .card--c .card__media img {
-  object-position: 50% 35%;
+  object-position: 45% 22%;
 }
 .card--c .card__media::after {
   background: linear-gradient(180deg, rgba(14, 20, 18, 0.1) 0%, rgba(14, 20, 18, 0.2) 22%, rgba(14, 20, 18, 0.78) 48%, rgba(14, 20, 18, 0.94) 72%, rgba(14, 20, 18, 0.97) 100%);
@@ -528,48 +528,276 @@
     height: 0.4rem;
   }
 }
-.card__schema figcaption {  margin-top: 0.6rem;
+.card__schema figcaption {
+  margin-top: 0.6rem;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   color: var(--text-mute);
 }
 
-/* Insurance and KunzAkquise: compact, same hierarchy as the other cards */
+/* Kunz Sourcing: beef illustration (labelled) with a real Merino wool photo as inset */
+.card__tag {
+  position: absolute;
+  top: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
+  left: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
+  z-index: 1;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(14, 20, 18, 0.6);
+  border: 1px solid rgba(241, 239, 232, 0.25);
+  color: var(--on-dark-soft);
+}
+.card--c .card__visual {
+  position: absolute;
+  top: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
+  right: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
+  width: 34%;
+  max-width: 210px;
+  margin: 0;
+  z-index: 1;
+}
+.card__inset picture {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(241, 239, 232, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+.card__inset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card__inset figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-align: right;
+  color: var(--on-dark-soft);
+}
+
+/* Kunz Systems, KunzAkquise, Vomando: a recognisable visual on top, text below */
 .card--plain {
-  justify-content: flex-start;
-  min-height: 0;
   background: var(--white);
 }
-.card--plain .card__body {
+.card--top {
+  justify-content: flex-start;
+  min-height: 0;
+}
+.card--top .card__visual {
+  order: -1;
+  position: relative;
+  height: 236px;
+  margin: 0;
+  overflow: hidden;
+}
+.card--top figure {
+  height: 100%;
+  padding: 2.4rem clamp(1.5rem, 1rem + 1.6vw, 2.6rem) 0;
+}
+.card--top figcaption {
+  position: absolute;
+  top: 0.95rem;
+  left: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+.card--top .card__body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
-  padding-top: calc(clamp(1.5rem, 1rem + 1.6vw, 2.6rem) + 1.6rem);
 }
-.card--plain .card__link {
+.card--top .card__link {
   margin-top: auto;
 }
-.card--plain .card__text {
-  margin-bottom: 1.1rem;
+.card--top .card__name {
+  font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.5rem);
 }
-.card--plain .card__text {
-  max-width: 34rem;
+
+/* Kunz Systems: schematic system window */
+.card--e {
+  background: linear-gradient(160deg, #16211d, var(--ink) 70%);
 }
-.card--plain::before {
-  content: "";
-  position: absolute;
-  top: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
-  left: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
-  width: 44px;
-  height: 1px;
+.card__window {
+  height: 100%;
+  padding: 0.7rem 0.8rem 0;
+  border: 1px solid var(--rule-dark-strong);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: rgba(241, 239, 232, 0.03);
+}
+.card__window-bar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 0.7rem;
+}
+.card__window-bar i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rule-dark-strong);
+}
+.card__window ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.card__window li {
+  display: grid;
+  gap: 5px;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--rule-dark);
+  border-radius: 6px;
+  background: rgba(14, 20, 18, 0.55);
+}
+.card__window strong {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--on-dark);
+  overflow-wrap: anywhere;
+}
+.card__window li i {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--rule-dark-strong);
+}
+.card__window li i:last-child {
+  width: 58%;
+}
+
+/* KunzAkquise: the service as a short ledger */
+.card--f .card__visual {
+  border-bottom: 1px solid var(--rule);
+}
+.card__ledger ol {
+  border-top: 1px solid var(--rule-strong);
+}
+.card__ledger li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.62rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.card__ledger li span {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+.card__ledger li i {
+  margin-left: auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--green);
+}
+.card__ledger li:last-child i {
   background: var(--green);
-  transition: width var(--t-med) var(--ease);
 }
-.card--plain:hover::before,
-.card--plain:focus-within::before {
-  width: 96px;
+
+/* Vomando: a reduced app view, no mascot, no gamification */
+.card--g .card__visual {
+  background: linear-gradient(180deg, var(--paper-2), var(--white));
+  border-bottom: 1px solid var(--rule);
 }
+.card--top .card__app {
+  display: flex;
+  justify-content: center;
+  padding-top: 2.1rem;
+}
+.card__phone {
+  position: relative;
+  width: 216px;
+  height: 280px;
+  flex: none;
+  padding: 1.25rem 0.9rem 0;
+  border: 5px solid var(--ink-3);
+  border-bottom: 0;
+  border-radius: 28px 28px 0 0;
+  background: var(--ink);
+  color: var(--on-dark);
+  box-shadow: 0 20px 50px -20px rgba(14, 20, 18, 0.55);
+  transition: transform var(--t-med) var(--ease);
+}
+.card--g:hover .card__phone,
+.card--g:focus-within .card__phone {
+  transform: translateY(-4px);
+}
+.card__phone-notch {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 56px;
+  height: 11px;
+  margin-left: -28px;
+  border-radius: 999px;
+  background: var(--ink-3);
+}
+.card__phone-course {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.card__phone-lesson {
+  margin: 0.2rem 0 0.55rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+.card__phone-row {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 0.35rem;
+  padding: 0.38rem 0.55rem;
+  border: 1px solid var(--rule-dark);
+  border-radius: 8px;
+}
+.card__phone-row span {
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark-mute);
+}
+.card__phone-row b {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+.card__phone-row em {
+  font-size: 0.66rem;
+  font-style: normal;
+  color: var(--on-dark-soft);
+}
+.card__phone-row.is-local {
+  border-color: var(--sage-dim);
+  background: rgba(185, 200, 189, 0.08);
+}
+.card__phone-progress {
+  display: block;
+  height: 3px;
+  margin-top: 0.7rem;
+  border-radius: 2px;
+  background: var(--rule-dark);
+}
+.card__phone-progress i {
+  display: block;
+  width: 40%;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--sage);
+}
+.card--g .card__visual figcaption {
+  color: var(--text-mute);
+}
+
 .portfolio__more {
   margin-top: 2.5rem;
 }
@@ -579,6 +807,12 @@
   }
   .card--c {
     min-height: 600px;
+  }
+  .card--f .card__visual {
+    height: auto;
+  }
+  .card--f figure {
+    padding-bottom: 1.4rem;
   }
 }
 @media (min-width: 900px) {
@@ -592,15 +826,16 @@
     grid-column: span 5;
   }
   .card--c {
-    grid-column: span 5;
-    min-height: 520px;
+    grid-column: span 7;
+    min-height: 540px;
   }
   .card--d {
-    grid-column: span 7;
+    grid-column: span 5;
   }
   .card--e,
-  .card--f {
-    grid-column: span 6;
+  .card--f,
+  .card--g {
+    grid-column: span 4;
   }
 }
 
@@ -917,6 +1152,22 @@
   to {
     transform: translate3d(-8px, -10px, 0);
   }
+}
+.feature__media .feature__tag {
+  top: 1rem;
+  left: 1rem;
+}
+.feature__media--photo .feature__inset {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 30%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 2px solid var(--paper);
+  box-shadow: 0 16px 40px rgba(14, 20, 18, 0.35);
 }
 .feature__media--wide {
   aspect-ratio: 15 / 8;
