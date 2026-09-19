@@ -11,11 +11,15 @@ export function BrandLink({ id, ctx, className = "" }: { id: BrandId; ctx: PageC
   const b = t.businesses[id];
   const target = BRAND_TARGET[id]?.[lang];
   if (!target) {
+    // No published website yet: the domain is named, but never linked.
     return (
-      <a className={`brand-link ${className}`.trim()} href={pagePath(lang, "contact")}>
-        <span>{b.cta}</span>
-        <Arrow />
-      </a>
+      <>
+        {BRAND[id].domain && <p className="brand-domain">{BRAND[id].domain}</p>}
+        <a className={`brand-link ${className}`.trim()} href={pagePath(lang, "contact")}>
+          <span>{b.cta}</span>
+          <Arrow />
+        </a>
+      </>
     );
   }
   const note = target.lang !== lang ? ` · ${t.portfolio.siteLang[target.lang]}` : "";

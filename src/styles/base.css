@@ -275,6 +275,10 @@ textarea {
 .brand-link:hover .arrow {
   transform: translate(2px, -2px);
 }
+.brand-domain {
+  font-size: var(--fs-small);
+  color: var(--text-mute);
+}
 .brand-link__domain {
   color: var(--text-mute);
   font-weight: 400;

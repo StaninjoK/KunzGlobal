@@ -52,7 +52,9 @@ export const BRAND: Record<BrandId, Brand> = {
   // kunzsystems.com is live (checked 2026-09-19, EN/ES/DE); vomando.com is not published yet: no link until it is.
   systems: { id: "systems", name: "Kunz Systems", url: "https://kunzsystems.com/", domain: "kunzsystems.com" },
   akquise: { id: "akquise", name: "KunzAkquise", url: "https://kunzakquise.com/", domain: "kunzakquise.com" },
-  vomando: { id: "vomando", name: "Vomando", url: null, domain: null },
+  // vomando.com belongs to the group; on 2026-09-19 it still served a registrar parking page over HTTP
+  // only (no HTTPS), so the domain is shown as plain text and not linked until the site is live.
+  vomando: { id: "vomando", name: "Vomando", url: null, domain: "vomando.com" },
 };
 
 export interface BrandTarget {

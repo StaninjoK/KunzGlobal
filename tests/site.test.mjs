@@ -108,6 +108,16 @@ test("seven active businesses everywhere: portfolio, directory, ecosystem, conta
   }
 });
 
+test("vomando.com is named but not linked while the site is not published", () => {
+  for (const lang of LANGS) {
+    for (const p of ["", "businesses/"]) {
+      const html = read((lang === "en" ? "/" : `/${lang}/`) + p);
+      assert.ok(visibleText(html).includes("vomando.com"), `${lang}/${p}: domain not shown`);
+      assert.ok(!/href="[^"]*vomando\.com/.test(html), `${lang}/${p}: vomando.com must not be linked`);
+    }
+  }
+});
+
 test("language switcher points to the same page in each language", () => {
   const html = read("/de/about/");
   for (const url of ["/about/", "/es/about/", "/de/about/", "/pt/about/"]) assert.ok(html.includes(`href="${url}"`), `switcher misses ${url}`);
