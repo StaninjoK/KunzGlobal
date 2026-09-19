@@ -10,7 +10,7 @@ const PAGES = ["", "businesses/", "about/", "contact/", "legal/", "privacy/", "t
 const routes = LANGS.flatMap((lang) => PAGES.map((page) => ({ lang, url: (lang === "en" ? "/" : `/${lang}/`) + page })));
 
 // Only websites that were verified to belong to the group may be linked.
-const ALLOWED_EXTERNAL = ["https://kunzagrotech.com/", "https://agralon.com/", "https://kunzsourcing.com/", "https://renvora.lat/", "https://kunzakquise.com/", "https://kunzglobal.com/"];
+const ALLOWED_EXTERNAL = ["https://kunzagrotech.com/", "https://agralon.com/", "https://kunzsourcing.com/", "https://renvora.lat/", "https://kunzakquise.com/", "https://kunzsystems.com/", "https://kunzglobal.com/"];
 
 // Confidential ventures and unprovable claims must never reach the published pages.
 const FORBIDDEN = [/kunz\s*solar/i, /kunz\s*recycling/i, /\bsolar\b/i, /recycling/i, /photovolta/i, /market[- ]leading/i, /industry leader/i, /number one/i, /marktführer/i, /líder del mercado/i, /\d+\s*\+\s*(clients|kunden|clientes)/i, /lorem ipsum/i,

@@ -68,16 +68,16 @@ export interface Content {
     sampleData: string;
     /** Renvora card: three schematic steps. */
     renvoraFlow: readonly [string, string, string];
-    /** Label for rendered (not photographed) images. */
-    illustration: string;
+    /** Kunz Sourcing: product lines in order of priority (shown on the card photo). */
+    sourcingLines: readonly [string, string];
     /** Kunz Systems card: four modules of the schematic system view. */
     systemsModules: readonly [string, string, string, string];
     systemsCaption: string;
     /** KunzAkquise card: the service in three steps. */
     akquiseSteps: readonly [string, string, string];
     akquiseCaption: string;
-    /** Vomando card: reduced app view (the Spanish phrases themselves are fixed). */
-    vomando: { course: string; lesson: string; neutral: string; local: string; meaning: string; caption: string };
+    /** Vomando card: reduced product view with the three product principles. */
+    vomando: { course: string; path: string; pillars: readonly [string, string, string]; caption: string };
   };
   businesses: Record<BrandId, BusinessCopy>;
   ecosystem: {

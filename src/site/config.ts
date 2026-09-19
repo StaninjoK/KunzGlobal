@@ -49,8 +49,8 @@ export const BRAND: Record<BrandId, Brand> = {
   agralon: { id: "agralon", name: "Agralon", url: "https://agralon.com/", domain: "agralon.com" },
   sourcing: { id: "sourcing", name: "Kunz Sourcing", url: "https://kunzsourcing.com/", domain: "kunzsourcing.com" },
   renvora: { id: "renvora", name: "Renvora", url: "https://renvora.lat/", domain: "renvora.lat" },
-  // kunzsystems.com and vomando.com are not published yet (checked 2026-09-19): no link until they are live.
-  systems: { id: "systems", name: "Kunz Systems", url: null, domain: null },
+  // kunzsystems.com is live (checked 2026-09-19, EN/ES/DE); vomando.com is not published yet: no link until it is.
+  systems: { id: "systems", name: "Kunz Systems", url: "https://kunzsystems.com/", domain: "kunzsystems.com" },
   akquise: { id: "akquise", name: "KunzAkquise", url: "https://kunzakquise.com/", domain: "kunzakquise.com" },
   vomando: { id: "vomando", name: "Vomando", url: null, domain: null },
 };
@@ -91,7 +91,12 @@ export const BRAND_TARGET: Record<BrandId, Record<Lang, BrandTarget> | null> = {
     de: { href: "https://renvora.lat/de", lang: "de" },
     pt: { href: "https://renvora.lat/pt", lang: "pt" },
   },
-  systems: null,
+  systems: {
+    en: { href: "https://kunzsystems.com/", lang: "en" },
+    es: { href: "https://kunzsystems.com/es", lang: "es" },
+    de: { href: "https://kunzsystems.com/de", lang: "de" },
+    pt: { href: "https://kunzsystems.com/", lang: "en" },
+  },
   akquise: {
     en: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
     es: { href: "https://kunzakquise.com/#leistungen", lang: "de" },

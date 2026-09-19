@@ -406,7 +406,7 @@
   object-position: 12% 0;
 }
 .card--c .card__media img {
-  object-position: 45% 22%;
+  object-position: 45% 40%;
 }
 .card--c .card__media::after {
   background: linear-gradient(180deg, rgba(14, 20, 18, 0.1) 0%, rgba(14, 20, 18, 0.2) 22%, rgba(14, 20, 18, 0.78) 48%, rgba(14, 20, 18, 0.94) 72%, rgba(14, 20, 18, 0.97) 100%);
@@ -535,51 +535,29 @@
   color: var(--text-mute);
 }
 
-/* Kunz Sourcing: beef illustration (labelled) with a real Merino wool photo as inset */
+/* Kunz Sourcing: real warehouse photo; the product lines (beef first) sit on it as a quiet tag */
 .card__tag {
   position: absolute;
   top: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
   left: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
   z-index: 1;
-  padding: 0.3rem 0.65rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: 999px;
-  background: rgba(14, 20, 18, 0.6);
+  background: rgba(14, 20, 18, 0.66);
   border: 1px solid rgba(241, 239, 232, 0.25);
-  color: var(--on-dark-soft);
+  color: var(--on-dark);
 }
-.card--c .card__visual {
-  position: absolute;
-  top: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
-  right: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
-  width: 34%;
-  max-width: 210px;
-  margin: 0;
-  z-index: 1;
+.card__tag b {
+  margin-right: 0.4rem;
+  font-weight: 400;
+  color: var(--on-dark-mute);
 }
-.card__inset picture {
-  display: block;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 6px;
-  border: 1px solid rgba(241, 239, 232, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-}
-.card__inset img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.card__inset figcaption {
-  margin-top: 0.45rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-align: right;
-  color: var(--on-dark-soft);
-}
-
 /* Kunz Systems, KunzAkquise, Vomando: a recognisable visual on top, text below */
 .card--plain {
   background: var(--white);
@@ -753,37 +731,10 @@
   font-size: 0.86rem;
   font-weight: 500;
 }
-.card__phone-row {
-  display: grid;
-  gap: 2px;
-  margin-bottom: 0.35rem;
-  padding: 0.38rem 0.55rem;
-  border: 1px solid var(--rule-dark);
-  border-radius: 8px;
-}
-.card__phone-row span {
-  font-size: 0.56rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--on-dark-mute);
-}
-.card__phone-row b {
-  font-size: 0.78rem;
-  font-weight: 500;
-}
-.card__phone-row em {
-  font-size: 0.66rem;
-  font-style: normal;
-  color: var(--on-dark-soft);
-}
-.card__phone-row.is-local {
-  border-color: var(--sage-dim);
-  background: rgba(185, 200, 189, 0.08);
-}
 .card__phone-progress {
   display: block;
   height: 3px;
-  margin-top: 0.7rem;
+  margin-bottom: 0.75rem;
   border-radius: 2px;
   background: var(--rule-dark);
 }
@@ -794,7 +745,32 @@
   border-radius: 2px;
   background: var(--sage);
 }
-.card--g .card__visual figcaption {
+.card__phone-list {
+  display: grid;
+  gap: 0.35rem;
+}
+.card__phone-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--rule-dark);
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.card__phone-list li span {
+  flex: none;
+  font-size: 0.56rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--on-dark-mute);
+}
+.card__phone-list li.is-active {
+  border-color: var(--sage-dim);
+  background: rgba(185, 200, 189, 0.08);
+}.card--g .card__visual figcaption {
   color: var(--text-mute);
 }
 
@@ -1152,22 +1128,6 @@
   to {
     transform: translate3d(-8px, -10px, 0);
   }
-}
-.feature__media .feature__tag {
-  top: 1rem;
-  left: 1rem;
-}
-.feature__media--photo .feature__inset {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  width: 30%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 6px;
-  border: 2px solid var(--paper);
-  box-shadow: 0 16px 40px rgba(14, 20, 18, 0.35);
 }
 .feature__media--wide {
   aspect-ratio: 15 / 8;

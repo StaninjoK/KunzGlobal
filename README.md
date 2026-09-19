@@ -8,7 +8,7 @@ Website der Dachmarke **Kunz Global** – Relaunch 2026 („One group. Multiple 
 - **Stack:** Vite + React + TypeScript. React rendert nur **zur Build-Zeit** statisches HTML (`src/render/prerender.tsx`); im Browser läuft kein React, nur `src/client/main.ts` (≈ 5 KB: Navigation, Reveals, Ökosystem-Hover, Parallax, Formular).
 - **Sprachen:** EN (Root), `/es/`, `/de/`, `/pt/` – jeweils `businesses/`, `about/`, `contact/`, `legal/`, `privacy/`, `terms/`. Canonical, hreflang, Open Graph und `sitemap.xml` entstehen beim Build.
 - **Texte:** ausschließlich in `src/content/<sprache>.ts` (Typ `Content` erzwingt gleiche Struktur in allen Sprachen). Rechtstexte in `src/content/legal/` – de/en/es vom alten Stand übernommen, pt übersetzt.
-- **Marken und Links:** `src/site/config.ts`. Es werden nur geprüfte Websites verlinkt; `url: null` heißt „kein Link“ (derzeit Kunz Systems und Vomando, deren Websites noch nicht veröffentlicht sind).
+- **Marken und Links:** `src/site/config.ts`. Es werden nur geprüfte Websites verlinkt; `url: null` heißt „kein Link“ (derzeit Vomando, dessen Website noch nicht veröffentlicht ist).
 - **Design-System:** Tokens in `src/styles/tokens.css`, Bausteine in `base.css`, Sektionen in `sections.css`, Motion in `motion.css` (achtet auf `prefers-reduced-motion`; ohne JavaScript bleibt alles sichtbar).
 - **Schriften:** Inter Tight + Instrument Serif, selbst gehostet (Fontsource). Keine Cookies, kein Tracking, keine Drittanbieter.
 
