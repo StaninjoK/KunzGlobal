@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { BRAND, BRANDS, CONTACT, SITE_URL, pagePath } from "../site/config";
+import { BRAND, BRANDS, CONTACT, CONTACT_ENDPOINT, SITE_URL, pagePath } from "../site/config";
 import { LEGAL } from "../content";
 import { Arrow, Eyebrow, Headline, PageHero, Picture } from "./layout";
 import type { PageContext } from "./layout";
@@ -159,12 +159,25 @@ export function Contact({ ctx }: { ctx: PageContext }) {
   const { t } = ctx;
   const c = t.contactPage;
   const f = c.form;
+  // With an endpoint the form really sends; without one it prepares an e-mail and says so.
+  const sends = Boolean(CONTACT_ENDPOINT);
   return (
     <>
       <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} />
       <section className="section contact">
         <div className="wrap contact__grid">
-          <form className="form" noValidate data-contact-form data-mailto={CONTACT.email} data-subject={f.mailSubject} data-error-required={f.errorRequired} data-error-email={f.errorEmail}>
+          <form
+            className="form"
+            noValidate
+            data-contact-form
+            data-endpoint={CONTACT_ENDPOINT ?? undefined}
+            data-lang={ctx.lang}
+            data-sending={f.send.sending}
+            data-mailto={CONTACT.email}
+            data-subject={f.mailSubject}
+            data-error-required={f.errorRequired}
+            data-error-email={f.errorEmail}
+          >
             <div className="form__row">
               <div className="field">
                 <label htmlFor="cf-name">{f.name}</label>
@@ -199,16 +212,27 @@ export function Contact({ ctx }: { ctx: PageContext }) {
               <textarea id="cf-message" name="message" rows={6} required aria-describedby="cf-message-error" />
               <p className="field__error" id="cf-message-error" aria-live="polite" />
             </div>
+            {sends && (
+              <div className="form__trap" aria-hidden="true">
+                <label htmlFor="cf-website">Website</label>
+                <input id="cf-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+            )}
             <div className="form__foot">
               <button className="btn btn--dark" type="submit">
-                {f.submit}
+                <span data-form-label>{sends ? f.send.submit : f.submit}</span>
                 <Arrow />
               </button>
-              <p className="form__note">{f.note}</p>
+              <p className="form__note">{sends ? f.send.note : f.note}</p>
             </div>
-            <p className="form__success" role="status" hidden data-form-success>
-              {f.success} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+            <p className="form__success" role="status" tabIndex={-1} hidden data-form-success>
+              {sends ? f.send.success : f.success} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
             </p>
+            {sends && (
+              <p className="form__failure" role="alert" tabIndex={-1} hidden data-form-failure>
+                {f.send.error} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+              </p>
+            )}
           </form>
           <aside className="contact__direct" data-reveal>
             <h2>{c.directTitle}</h2>
@@ -323,7 +347,7 @@ export function Privacy({ ctx }: { ctx: PageContext }) {
       <h2>{l.contactTitle}</h2>
       <p>{l.contactText}</p>
       <h2>{o.formTitle}</h2>
-      <p>{o.formText}</p>
+      <p>{CONTACT_ENDPOINT ? o.formTextSend : o.formText}</p>
       <h2>{o.socialTitle}</h2>
       <p>{o.socialText}</p>
       <h2>{l.cookiesTitle}</h2>

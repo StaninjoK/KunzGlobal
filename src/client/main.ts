@@ -189,11 +189,16 @@ function initParallax(): void {
   }
 }
 
-/* ---------- contact form: prepares an e-mail, sends nothing itself ---------- */
+/* ---------- contact form: sends to the configured endpoint, otherwise prepares an e-mail ---------- */
 function initContactForm(): void {
   const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
   if (!form) return;
   const success = form.querySelector<HTMLElement>("[data-form-success]");
+  const failure = form.querySelector<HTMLElement>("[data-form-failure]");
+  const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const buttonLabel = form.querySelector<HTMLElement>("[data-form-label]");
+  const loadedAt = Date.now();
+  let busy = false;
 
   const setError = (field: HTMLInputElement | HTMLTextAreaElement, message: string) => {
     field.setAttribute("aria-invalid", message ? "true" : "false");
@@ -215,11 +220,29 @@ function initContactForm(): void {
     return true;
   };
 
-  const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea"));
+  const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea")).filter((field) => field.name !== "website");
   fields.forEach((field) => field.addEventListener("blur", () => field.value && validate(field)));
+
+  const show = (el: HTMLElement | null, visible: boolean) => {
+    if (!el) return;
+    el.hidden = !visible;
+    if (visible) el.focus();
+  };
+
+  /** Posts form-encoded data (a simple CORS request, no preflight) and resolves only on a confirmed delivery. */
+  const send = async (endpoint: string, data: FormData): Promise<void> => {
+    const body = new URLSearchParams();
+    for (const key of ["name", "company", "email", "area", "message", "website"]) body.set(key, String(data.get(key) ?? "").trim());
+    body.set("lang", form.dataset.lang ?? "en");
+    body.set("t", String(Date.now() - loadedAt));
+    const response = await fetch(endpoint, { method: "POST", body });
+    const result = (await response.json()) as { ok?: boolean };
+    if (!response.ok || !result.ok) throw new Error("rejected");
+  };
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (busy) return;
     const invalid = fields.filter((field) => !validate(field));
     if (invalid.length) {
       invalid[0].focus();
@@ -227,6 +250,27 @@ function initContactForm(): void {
     }
     const data = new FormData(form);
     const get = (key: string) => String(data.get(key) ?? "").trim();
+    const endpoint = form.dataset.endpoint;
+    if (endpoint) {
+      const idleLabel = buttonLabel?.textContent ?? "";
+      busy = true;
+      if (button) button.disabled = true;
+      if (buttonLabel) buttonLabel.textContent = form.dataset.sending ?? idleLabel;
+      show(success, false);
+      show(failure, false);
+      send(endpoint, data)
+        .then(() => {
+          form.reset();
+          show(success, true);
+        })
+        .catch(() => show(failure, true))
+        .finally(() => {
+          busy = false;
+          if (button) button.disabled = false;
+          if (buttonLabel) buttonLabel.textContent = idleLabel;
+        });
+      return;
+    }
     const label = (name: string) => form.querySelector(`label[for="cf-${name}"]`)?.firstChild?.textContent?.trim() ?? name;
     const lines = [
       get("message"),

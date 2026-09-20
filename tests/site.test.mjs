@@ -10,7 +10,7 @@ const PAGES = ["", "businesses/", "about/", "contact/", "legal/", "privacy/", "t
 const routes = LANGS.flatMap((lang) => PAGES.map((page) => ({ lang, url: (lang === "en" ? "/" : `/${lang}/`) + page })));
 
 // Only websites that were verified to belong to the group may be linked.
-const ALLOWED_EXTERNAL = ["https://kunzagrotech.com/", "https://agralon.com/", "https://kunzsourcing.com/", "https://renvora.lat/", "https://kunzakquise.com/", "https://kunzsystems.com/", "https://kunzglobal.com/"];
+const ALLOWED_EXTERNAL = ["https://kunzagrotech.com/", "https://agralon.com/", "https://kunzsourcing.com/", "https://renvora.lat/", "https://kunzakquise.com/", "https://kunzsystems.com/", "https://vomando.com/", "https://kunzglobal.com/"];
 
 // Confidential ventures and unprovable claims must never reach the published pages.
 const FORBIDDEN = [/kunz\s*solar/i, /kunz\s*recycling/i, /\bsolar\b/i, /recycling/i, /photovolta/i, /market[- ]leading/i, /industry leader/i, /number one/i, /marktführer/i, /líder del mercado/i, /\d+\s*\+\s*(clients|kunden|clientes)/i, /lorem ipsum/i,
@@ -108,12 +108,19 @@ test("seven active businesses everywhere: portfolio, directory, ecosystem, conta
   }
 });
 
-test("vomando.com is named but not linked while the site is not published", () => {
+test("Vomando links to its landing page in the page language and stays marked as in development", () => {
+  const target = { en: "https://vomando.com/", es: "https://vomando.com/es/", de: "https://vomando.com/de/", pt: "https://vomando.com/pt/" };
+  const label = { en: "Explore Vomando", es: "Descubrir Vomando", de: "Vomando entdecken", pt: "Conhecer a Vomando" };
+  const status = { en: "In development", es: "En desarrollo", de: "In Entwicklung", pt: "Em desenvolvimento" };
   for (const lang of LANGS) {
     for (const p of ["", "businesses/"]) {
       const html = read((lang === "en" ? "/" : `/${lang}/`) + p);
-      assert.ok(visibleText(html).includes("vomando.com"), `${lang}/${p}: domain not shown`);
-      assert.ok(!/href="[^"]*vomando\.com/.test(html), `${lang}/${p}: vomando.com must not be linked`);
+      const link = html.match(new RegExp(`<a [^>]*href="${target[lang]}"[^>]*>[\\s\\S]*?</a>`))?.[0];
+      assert.ok(link, `${lang}/${p}: Vomando is not linked to ${target[lang]}`);
+      assert.ok(link.includes(label[lang]), `${lang}/${p}: call to action label`);
+      assert.ok(link.includes('target="_blank"') && link.includes('rel="noopener"'), `${lang}/${p}: external link attributes`);
+      assert.ok(!html.includes('class="brand-domain"'), `${lang}/${p}: no business is left with a text-only domain`);
+      assert.ok(visibleText(html).includes(status[lang]), `${lang}/${p}: status missing`);
     }
   }
 });
@@ -123,14 +130,33 @@ test("language switcher points to the same page in each language", () => {
   for (const url of ["/about/", "/es/about/", "/de/about/", "/pt/about/"]) assert.ok(html.includes(`href="${url}"`), `switcher misses ${url}`);
 });
 
-test("contact form is labelled and sends nothing by itself", () => {
+test("contact form: labelled fields, honest texts for its mode, matching privacy policy, no secrets", () => {
+  const sendNote = { en: "sent to Kunz Global by email", es: "se envían por correo electrónico a Kunz Global", de: "per E-Mail an Kunz Global übermittelt", pt: "enviados por e-mail à Kunz Global" };
+  const mailNote = { en: "opens your email program", es: "abre su programa de correo", de: "öffnet Ihr E-Mail-Programm", pt: "abre o seu programa de e-mail" };
+  const privacySend = { en: "Google Apps Script", es: "Google Apps Script", de: "Google Apps Script", pt: "Google Apps Script" };
   for (const lang of LANGS) {
-    const html = read((lang === "en" ? "/" : `/${lang}/`) + "contact/");
+    const prefix = lang === "en" ? "/" : `/${lang}/`;
+    const html = read(prefix + "contact/");
+    const privacy = visibleText(read(prefix + "privacy/"));
     for (const id of ["cf-name", "cf-company", "cf-email", "cf-area", "cf-message"]) {
       assert.ok(html.includes(`for="${id}"`) && html.includes(`id="${id}"`), `${lang} contact: ${id} unlabelled`);
     }
-    assert.ok(!/<form[^>]*\saction=/.test(html), "the form must not post anywhere");
+    assert.ok(!/<form[^>]*\saction=/.test(html), "the form is handled by the client script, never by a plain post");
+    const endpoint = html.match(/data-endpoint="([^"]+)"/)?.[1];
+    if (endpoint) {
+      if (!process.env.VITE_CONTACT_ENDPOINT) assert.match(endpoint, /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/, "endpoint must be the Apps Script web app");
+      assert.ok(visibleText(html).includes(sendNote[lang]), `${lang}: note must say that the form sends`);
+      assert.ok(html.includes('name="website"') && html.includes("data-form-failure"), `${lang}: honeypot and error state`);
+      assert.ok(privacy.includes(privacySend[lang]), `${lang}: privacy policy must describe the transmission`);
+    } else {
+      assert.ok(visibleText(html).includes(mailNote[lang]), `${lang}: note must say that the form only prepares an email`);
+      assert.ok(!privacy.includes(privacySend[lang]), `${lang}: privacy policy must not describe a transmission that does not happen`);
+    }
+    assert.ok(!/(api[_-]?key|secret|token)\s*[:=]/i.test(html), `${lang}: no credentials in the page`);
   }
+  const script = fs.readFileSync(path.resolve("apps-script/contact-form.gs"), "utf8");
+  assert.match(script, /var TO = "stan@kunzglobal\.com";/, "mail goes to the published contact address");
+  assert.ok(!/SpreadsheetApp|UrlFetchApp|DriveApp/.test(script), "the script only sends the email, it stores nothing");
 });
 
 test("sitemap and robots", () => {

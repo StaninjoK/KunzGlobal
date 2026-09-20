@@ -131,7 +131,7 @@ export const es: Content = {
       category: "Tecnología para aprender idiomas",
       short: "Un producto digital para aprender idiomas: aprendizaje personalizado, idioma local y real, y práctica con apoyo de IA.",
       offer: "Un producto digital para aprender idiomas con rutas de aprendizaje personalizadas, el idioma local tal como se usa en la vida real y práctica con apoyo de IA. Primer curso: Español · Uruguay.",
-      cta: "Consultar a través de Kunz Global",
+      cta: "Descubrir Vomando",
       long: "Vomando es el emprendimiento de tecnología de consumo del grupo en aprendizaje digital. El producto combina rutas de aprendizaje personalizadas con el idioma local tal como se usa en la vida cotidiana, y está pensado para la práctica con apoyo de IA. El primer curso es el español de Uruguay; se prevén más idiomas y variantes regionales. Vomando se encuentra en desarrollo.",
       focus: ["Aprendizaje personalizado", "Idioma local y real", "Práctica con apoyo de IA", "Mobile-first"],
       status: "En desarrollo",
@@ -270,6 +270,13 @@ export const es: Content = {
       errorRequired: "Por favor complete este campo.",
       errorEmail: "Por favor ingrese un correo electrónico válido.",
       mailSubject: "Consulta desde kunzglobal.com",
+      send: {
+        submit: "Enviar mensaje",
+        sending: "Enviando…",
+        note: "Sus datos se envían por correo electrónico a Kunz Global y se usan únicamente para responder su consulta. Más información en la política de privacidad.",
+        success: "Gracias. Su mensaje fue enviado. Responderemos a la dirección de correo que nos indicó. También puede escribirnos a",
+        error: "No se pudo enviar su mensaje. Inténtelo de nuevo o escríbanos directamente a",
+      },
     },
     directTitle: "Contacto directo",
     emailLabel: "Correo",
@@ -303,6 +310,8 @@ export const es: Content = {
     formTitle: "Formulario de contacto",
     formText:
       "El formulario de contacto de este sitio no transmite datos a nosotros ni a terceros. Solo prepara un mensaje en su propio programa de correo; el mensaje se envía cuando usted lo envía desde allí. Este sitio no instala cookies, carga sus tipografías desde su propio servidor y no usa herramientas de análisis.",
+    formTextSend:
+      "Al enviar el formulario de contacto, los datos que usted ingresa (nombre, empresa si la indica, correo electrónico, área de interés y su mensaje) se nos transmiten y se entregan por correo electrónico en nuestra dirección de contacto. La transmisión y la entrega se realizan mediante Google Apps Script y Gmail dentro de nuestra cuenta de Google Workspace (Google Ireland Ltd. / Google LLC); en ese proceso Google trata datos técnicos de conexión, como su dirección IP. Usamos sus datos únicamente para responder su consulta y para la comunicación posterior, nunca con fines de marketing. La base legal es la preparación de un contrato o nuestro interés legítimo en responder consultas. El sitio web no guarda nada; el mensaje permanece en nuestra casilla solo el tiempo necesario para atender su consulta. Este sitio no instala cookies, carga sus tipografías desde su propio servidor y no usa herramientas de análisis.",
     updated: "Última actualización: septiembre de 2026",
   },
 };

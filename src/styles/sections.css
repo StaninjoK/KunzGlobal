@@ -1799,11 +1799,32 @@
   background: var(--white);
   color: var(--text);
 }
+.form__failure {
+  max-width: 34rem;
+  padding: 1rem 1.2rem;
+  border-left: 2px solid var(--error);
+  background: var(--white);
+  font-size: var(--fs-small);
+  color: var(--text);
+}
+.form__trap {
+  position: absolute;
+  left: -200vw;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+.form__failure a,
 .form__success a,
 .legal__body a,
 .contact__direct a {
   border-bottom: 1px solid var(--rule-strong);
 }
+.form__failure a:hover,
 .form__success a:hover,
 .legal__body a:hover,
 .contact__direct a:hover {

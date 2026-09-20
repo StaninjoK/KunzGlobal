@@ -153,6 +153,8 @@ export interface Content {
       errorRequired: string;
       errorEmail: string;
       mailSubject: string;
+      /** Texts used when the form really sends (CONTACT_ENDPOINT is set). */
+      send: { submit: string; sending: string; note: string; success: string; error: string };
     };
     directTitle: string;
     emailLabel: string;
@@ -180,6 +182,8 @@ export interface Content {
     socialText: string;
     formTitle: string;
     formText: string;
+    /** Privacy text for the sending form (CONTACT_ENDPOINT is set). */
+    formTextSend: string;
     updated: string;
   };
 }

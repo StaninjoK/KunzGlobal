@@ -49,12 +49,11 @@ export const BRAND: Record<BrandId, Brand> = {
   agralon: { id: "agralon", name: "Agralon", url: "https://agralon.com/", domain: "agralon.com" },
   sourcing: { id: "sourcing", name: "Kunz Sourcing", url: "https://kunzsourcing.com/", domain: "kunzsourcing.com" },
   renvora: { id: "renvora", name: "Renvora", url: "https://renvora.lat/", domain: "renvora.lat" },
-  // kunzsystems.com is live (checked 2026-09-19, EN/ES/DE); vomando.com is not published yet: no link until it is.
+  // kunzsystems.com is live (checked 2026-09-19, EN/ES/DE).
   systems: { id: "systems", name: "Kunz Systems", url: "https://kunzsystems.com/", domain: "kunzsystems.com" },
   akquise: { id: "akquise", name: "KunzAkquise", url: "https://kunzakquise.com/", domain: "kunzakquise.com" },
-  // vomando.com belongs to the group; on 2026-09-19 it still served a registrar parking page over HTTP
-  // only (no HTTPS), so the domain is shown as plain text and not linked until the site is live.
-  vomando: { id: "vomando", name: "Vomando", url: null, domain: "vomando.com" },
+  // vomando.com is the product landing page (EN at the root, /es/ /de/ /pt/); the product itself is still in development.
+  vomando: { id: "vomando", name: "Vomando", url: "https://vomando.com/", domain: "vomando.com" },
 };
 
 export interface BrandTarget {
@@ -105,8 +104,22 @@ export const BRAND_TARGET: Record<BrandId, Record<Lang, BrandTarget> | null> = {
     de: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
     pt: { href: "https://kunzakquise.com/#leistungen", lang: "de" },
   },
-  vomando: null,
+  vomando: {
+    en: { href: "https://vomando.com/", lang: "en" },
+    es: { href: "https://vomando.com/es/", lang: "es" },
+    de: { href: "https://vomando.com/de/", lang: "de" },
+    pt: { href: "https://vomando.com/pt/", lang: "pt" },
+  },
 };
+
+/**
+ * Endpoint of the contact form: the Apps Script web app "Kunz Global Kontaktformular" in the group's Google
+ * Workspace account (source: apps-script/contact-form.gs). It delivers the message by email to CONTACT.email.
+ * The URL is public by nature and no secret. While it is `null` the form falls back to preparing an email in
+ * the visitor's own mail program, and the page says so. VITE_CONTACT_ENDPOINT overrides it for local tests
+ * (scripts/serve.mjs answers on /__contact like the real endpoint).
+ */
+export const CONTACT_ENDPOINT: string | null = import.meta.env.VITE_CONTACT_ENDPOINT || null;
 
 /** Contact details already published on the previous kunzglobal.com. */
 export const CONTACT = {

@@ -131,7 +131,7 @@ export const de: Content = {
       category: "Technologie für Sprachenlernen",
       short: "Ein digitales Lernprodukt für Sprachen: personalisiertes Lernen, lokale Alltagssprache und KI-gestütztes Üben.",
       offer: "Ein digitales Lernprodukt für Sprachen mit personalisierten Lernpfaden, lokaler Sprache, wie sie im Alltag tatsächlich verwendet wird, und KI-gestütztem Üben. Erster Kurs: Spanisch · Uruguay.",
-      cta: "Anfrage über Kunz Global",
+      cta: "Vomando entdecken",
       long: "Vomando ist das Consumer-Technology-Venture der Gruppe im Bereich Digital Learning. Das Produkt verbindet personalisierte Lernpfade mit lokaler Sprache, wie sie im Alltag tatsächlich verwendet wird, und ist für KI-gestütztes Üben ausgelegt. Der erste Kurs ist Spanisch, wie es in Uruguay gesprochen wird; weitere Sprachen und regionale Varianten sind geplant. Vomando befindet sich in Entwicklung.",
       focus: ["Personalisiertes Lernen", "Lokale Alltagssprache", "KI-gestütztes Üben", "Mobile-first"],
       status: "In Entwicklung",
@@ -270,6 +270,13 @@ export const de: Content = {
       errorRequired: "Bitte füllen Sie dieses Feld aus.",
       errorEmail: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
       mailSubject: "Anfrage über kunzglobal.com",
+      send: {
+        submit: "Nachricht senden",
+        sending: "Wird gesendet…",
+        note: "Ihre Angaben werden per E-Mail an Kunz Global übermittelt und nur zur Beantwortung Ihrer Anfrage verwendet. Details in der Datenschutzerklärung.",
+        success: "Vielen Dank. Ihre Nachricht wurde gesendet. Wir antworten an die von Ihnen angegebene E-Mail-Adresse. Sie erreichen uns auch unter",
+        error: "Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an",
+      },
     },
     directTitle: "Direkter Kontakt",
     emailLabel: "E-Mail",
@@ -303,6 +310,8 @@ export const de: Content = {
     formTitle: "Kontaktformular",
     formText:
       "Das Kontaktformular dieser Website übermittelt keine Daten an uns oder an Dritte. Es bereitet lediglich eine Nachricht in Ihrem eigenen E-Mail-Programm vor; versendet wird sie erst, wenn Sie sie dort absenden. Diese Website setzt keine Cookies, lädt ihre Schriften vom eigenen Server und verwendet keine Analysewerkzeuge.",
+    formTextSend:
+      "Wenn Sie das Kontaktformular absenden, werden die von Ihnen eingegebenen Angaben (Name, Unternehmen, falls angegeben, E-Mail-Adresse, Interessensbereich und Ihre Nachricht) an uns übermittelt und per E-Mail an unsere Kontaktadresse zugestellt. Übermittlung und Zustellung erfolgen über Google Apps Script und Gmail in unserem Google-Workspace-Konto (Google Ireland Ltd. / Google LLC); dabei verarbeitet Google technische Verbindungsdaten wie Ihre IP-Adresse. Wir verwenden Ihre Angaben ausschließlich zur Beantwortung Ihrer Anfrage und für eine mögliche Anschlusskommunikation, nicht für Werbung. Rechtsgrundlage ist die Anbahnung eines Vertrags bzw. unser berechtigtes Interesse an der Beantwortung von Anfragen. Die Website selbst speichert nichts; die Nachricht bleibt nur so lange in unserem Postfach, wie es für die Bearbeitung Ihrer Anfrage erforderlich ist. Diese Website setzt keine Cookies, lädt ihre Schriften vom eigenen Server und verwendet keine Analysewerkzeuge.",
     updated: "Stand: September 2026",
   },
 };

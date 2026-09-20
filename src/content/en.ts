@@ -131,7 +131,7 @@ export const en: Content = {
       category: "Language Learning Technology",
       short: "A digital language-learning product: personalised learning, local real-world language and AI-supported practice.",
       offer: "A digital language-learning product built on personalised learning paths, local language as it is used in real life and AI-supported practice. First course: Spanish · Uruguay.",
-      cta: "Enquire via Kunz Global",
+      cta: "Explore Vomando",
       long: "Vomando is the group's consumer technology venture in digital learning. The product combines personalised learning paths with local language as it is actually used in everyday life, and is designed for AI-supported practice. The first course is Spanish as spoken in Uruguay; further languages and regional variants are planned. Vomando is currently in development.",
       focus: ["Personalised learning", "Local, real-world language", "AI-supported practice", "Mobile-first"],
       status: "In development",
@@ -270,6 +270,13 @@ export const en: Content = {
       errorRequired: "Please fill in this field.",
       errorEmail: "Please enter a valid email address.",
       mailSubject: "Enquiry via kunzglobal.com",
+      send: {
+        submit: "Send message",
+        sending: "Sending…",
+        note: "Your details are sent to Kunz Global by email and used only to answer your enquiry. Details in the privacy policy.",
+        success: "Thank you. Your message has been sent. We will reply to the email address you provided. You can also reach us at",
+        error: "Your message could not be sent. Please try again, or write to us directly at",
+      },
     },
     directTitle: "Direct contact",
     emailLabel: "Email",
@@ -303,6 +310,8 @@ export const en: Content = {
     formTitle: "Contact form",
     formText:
       "The contact form on this website does not transmit any data to us or to third parties. It only prepares a message in your own email program; the message is sent when you send it from there. This website sets no cookies, loads its fonts from its own server and uses no analytics.",
+    formTextSend:
+      "When you submit the contact form, the details you enter (name, company if given, email address, area of interest and your message) are transmitted to us and delivered by email to our contact address. Transmission and delivery run on Google Apps Script and Gmail within our Google Workspace account (Google Ireland Ltd. / Google LLC); in the process Google handles technical connection data such as your IP address. We use your details solely to answer your enquiry and for any follow-up communication, never for marketing. The legal basis is the initiation of a contract or our legitimate interest in answering enquiries. The website itself stores nothing; the message stays in our mailbox only as long as it is needed to handle your enquiry. This website sets no cookies, loads its fonts from its own server and uses no analytics.",
     updated: "Last updated: September 2026",
   },
 };
