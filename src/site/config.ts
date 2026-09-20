@@ -119,7 +119,9 @@ export const BRAND_TARGET: Record<BrandId, Record<Lang, BrandTarget> | null> = {
  * the visitor's own mail program, and the page says so. VITE_CONTACT_ENDPOINT overrides it for local tests
  * (scripts/serve.mjs answers on /__contact like the real endpoint).
  */
-export const CONTACT_ENDPOINT: string | null = import.meta.env.VITE_CONTACT_ENDPOINT || null;
+export const CONTACT_ENDPOINT: string | null =
+  import.meta.env.VITE_CONTACT_ENDPOINT ||
+  "https://script.google.com/macros/s/AKfycbyA-otqF2AjWnEbcDG6GRDG5Wzxipk27DePeFV4YXHnFQwURLnOdlp6vO9zn4tdVhC7/exec";
 
 /** Contact details already published on the previous kunzglobal.com. */
 export const CONTACT = {
