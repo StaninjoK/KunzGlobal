@@ -54,7 +54,7 @@ export const en: Content = {
     body: "Each business has its own brand, its own market and its own focus. The group connects them — with shared technology, operational experience and an international outlook.",
     facts: [
       { label: "Base", value: "San José, Uruguay" },
-      { label: "Portfolio", value: "Seven active businesses" },
+      { label: "Portfolio", value: "Eight active businesses" },
       { label: "Sectors", value: "Agriculture · Technology · Trade · Sales" },
       { label: "Working languages", value: "English · Español · Deutsch · Português" },
     ],
@@ -62,7 +62,7 @@ export const en: Content = {
   portfolio: {
     eyebrow: "Portfolio",
     title: ["Our", "businesses."],
-    lead: "Seven brands, each specialised in its field. Built, owned and operated within the group.",
+    lead: "Eight brands, each specialised in its field. Built, owned and operated within the group.",
     viewAll: "All businesses in detail",
     external: "opens in a new tab",
     siteLang: { en: "site in English", es: "site in Spanish", de: "site in German", pt: "site in Portuguese" },
@@ -75,6 +75,8 @@ export const en: Content = {
     akquiseSteps: ["Target list", "First contact", "Appointment"],
     akquiseCaption: "Service process",
     vomando: { course: "Spanish · Uruguay", path: "Your learning path", pillars: ["Personalised learning", "Local, real-world language", "AI-supported practice"], caption: "Schematic product view" },
+    voxeranoSteps: ["Voice", "Structure", "Signed report"],
+    voxeranoCaption: "Schematic process",
   },
   businesses: {
     agrotech: {
@@ -136,6 +138,22 @@ export const en: Content = {
       focus: ["Personalised learning", "Local, real-world language", "AI-supported practice", "Mobile-first"],
       status: "In development",
     },
+    voxerano: {
+      category: "Field Service Technology",
+      short: "Voice-to-report software for field service teams: technicians speak, and the structured service report is ready before they leave the site.",
+      offer: "Software for field service teams: technicians describe the job on site, and Voxerano turns voice, photos and notes into a structured, reviewed and signed report with PDF.",
+      cta: "Discover Voxerano",
+      long: "Voxerano is the group's voice-to-report product, developed within Kunz Systems. Technicians describe the work on site in their own words; Voxerano sorts what was said into a report structure, links photos and customer data, and every point shows its source. The team reviews and approves, the customer signs on the device, and the PDF is ready before anyone leaves the site. Voxerano is in development and onboards teams personally through early access.",
+      focus: ["Voice capture", "Structured reports", "Review & approval", "Signed PDF"],
+      status: "In development · early access",
+    },
+  },
+  paco: {
+    eyebrow: "The character of the group",
+    title: ["Meet", "Paco."],
+    text: "Paco is the recurring character of the Kunz ecosystem. He appears across our products in different roles: as an operator in Agralon, with a headset in Renvora, at the microphone in Voxerano, as a companion in Vomando. One character, many businesses: a quiet sign that everything here belongs together.",
+    roles: ["Agralon · operator", "Renvora · sales", "Voxerano · voice", "Vomando · companion"],
+    alt: "Paco, the Kunz Global character: a friendly armadillo standing next to a globe.",
   },
   ecosystem: {
     eyebrow: "Ecosystem",
@@ -223,7 +241,7 @@ export const en: Content = {
   },
   businessesPage: {
     eyebrow: "Portfolio",
-    title: ["Seven businesses.", "One group."],
+    title: ["Eight businesses.", "One group."],
     lead: "Each company in the portfolio is specialised, independently branded and operated within Kunz Global.",
     focusLabel: "Focus",
     futureLink: "See what comes next",
@@ -248,7 +266,7 @@ export const en: Content = {
     },
     facts: [
       { label: "Registered office", value: "San José, Uruguay" },
-      { label: "Businesses", value: "Seven active brands" },
+      { label: "Businesses", value: "Eight active brands" },
       { label: "Fields", value: "Agriculture, software, trade, sales" },
     ],
   },

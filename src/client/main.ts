@@ -290,9 +290,35 @@ function initContactForm(): void {
   });
 }
 
+/* ---------- Paco: the group's 3D character, its viewer loads only when the block comes near ---------- */
+function initPaco(): void {
+  const el = document.querySelector("paco-3d");
+  if (!el || !("IntersectionObserver" in window)) return;
+  // the poster stays when the viewer would not render anyway (reduced motion; phones show the poster by design)
+  if (reducedMotion.matches || (el.getAttribute("mobile") === "poster" && window.matchMedia("(max-width: 700px)").matches)) return;
+  const load = () => {
+    if (document.querySelector("script[data-paco]")) return;
+    const script = document.createElement("script");
+    script.src = "/paco/paco-viewer.js";
+    script.defer = true;
+    script.dataset.paco = "";
+    document.head.appendChild(script);
+  };
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      load();
+      observer.disconnect();
+    },
+    { rootMargin: "600px 0px" }
+  );
+  observer.observe(el);
+}
+
 initHeader();
 initMobileMenu();
 initReveals();
 initEcosystem();
 initParallax();
 initContactForm();
+initPaco();

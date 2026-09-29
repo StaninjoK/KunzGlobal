@@ -54,7 +54,7 @@ export const es: Content = {
     body: "Cada empresa tiene su propia marca, su propio mercado y su propio foco. El grupo las conecta — con tecnología compartida, experiencia operativa y una mirada internacional.",
     facts: [
       { label: "Base", value: "San José, Uruguay" },
-      { label: "Portafolio", value: "Siete empresas activas" },
+      { label: "Portafolio", value: "Ocho empresas activas" },
       { label: "Sectores", value: "Agricultura · Tecnología · Comercio · Ventas" },
       { label: "Idiomas de trabajo", value: "English · Español · Deutsch · Português" },
     ],
@@ -62,7 +62,7 @@ export const es: Content = {
   portfolio: {
     eyebrow: "Portafolio",
     title: ["Nuestras", "empresas."],
-    lead: "Siete marcas, cada una especializada en su área. Construidas y operadas dentro del grupo.",
+    lead: "Ocho marcas, cada una especializada en su área. Construidas y operadas dentro del grupo.",
     viewAll: "Todas las empresas en detalle",
     external: "se abre en una pestaña nueva",
     siteLang: { en: "sitio en inglés", es: "sitio en español", de: "sitio en alemán", pt: "sitio en portugués" },
@@ -75,6 +75,8 @@ export const es: Content = {
     akquiseSteps: ["Lista de objetivos", "Primer contacto", "Reunión"],
     akquiseCaption: "Proceso del servicio",
     vomando: { course: "Español · Uruguay", path: "Tu ruta de aprendizaje", pillars: ["Aprendizaje personalizado", "Idioma local y real", "Práctica con apoyo de IA"], caption: "Vista esquemática del producto" },
+    voxeranoSteps: ["Voz", "Estructura", "Informe firmado"],
+    voxeranoCaption: "Proceso esquemático",
   },
   businesses: {
     agrotech: {
@@ -136,6 +138,22 @@ export const es: Content = {
       focus: ["Aprendizaje personalizado", "Idioma local y real", "Práctica con apoyo de IA", "Mobile-first"],
       status: "En desarrollo",
     },
+    voxerano: {
+      category: "Tecnología para servicio técnico en campo",
+      short: "Software de voz a informe para equipos de servicio técnico: los técnicos hablan y el informe estructurado queda listo antes de dejar el sitio.",
+      offer: "Software para equipos de servicio técnico en campo: los técnicos describen el trabajo en el lugar y Voxerano convierte voz, fotos y notas en un informe estructurado, revisado y firmado, con PDF.",
+      cta: "Descubrir Voxerano",
+      long: "Voxerano es el producto de voz a informe del grupo, desarrollado dentro de Kunz Systems. Los técnicos describen el trabajo en el lugar con sus propias palabras; Voxerano ordena lo dicho en la estructura del informe, vincula fotos y datos del cliente, y cada punto muestra su fuente. El equipo revisa y aprueba, el cliente firma en el dispositivo y el PDF queda listo antes de que nadie deje el sitio. Voxerano está en desarrollo e incorpora a los equipos personalmente mediante acceso anticipado.",
+      focus: ["Captura por voz", "Informes estructurados", "Revisión y aprobación", "PDF firmado"],
+      status: "En desarrollo · acceso anticipado",
+    },
+  },
+  paco: {
+    eyebrow: "El personaje del grupo",
+    title: ["Este es", "Paco."],
+    text: "Paco es el personaje recurrente del ecosistema Kunz. Aparece en nuestros productos con distintos roles: como operador en Agralon, con auriculares en Renvora, ante el micrófono en Voxerano, como compañero en Vomando. Un personaje, muchas empresas: una señal discreta de que aquí todo forma parte de lo mismo.",
+    roles: ["Agralon · operador", "Renvora · ventas", "Voxerano · voz", "Vomando · compañero"],
+    alt: "Paco, el personaje de Kunz Global: un armadillo amable junto a un globo terráqueo.",
   },
   ecosystem: {
     eyebrow: "Ecosistema",
@@ -223,7 +241,7 @@ export const es: Content = {
   },
   businessesPage: {
     eyebrow: "Portafolio",
-    title: ["Siete empresas.", "Un grupo."],
+    title: ["Ocho empresas.", "Un grupo."],
     lead: "Cada empresa del portafolio es especializada, tiene marca propia y se opera dentro de Kunz Global.",
     focusLabel: "Foco",
     futureLink: "Ver lo que viene",
@@ -248,7 +266,7 @@ export const es: Content = {
     },
     facts: [
       { label: "Sede", value: "San José, Uruguay" },
-      { label: "Empresas", value: "Siete marcas activas" },
+      { label: "Empresas", value: "Ocho marcas activas" },
       { label: "Áreas", value: "Agricultura, software, comercio, ventas" },
     ],
   },

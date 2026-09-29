@@ -78,8 +78,20 @@ export interface Content {
     akquiseCaption: string;
     /** Vomando card: reduced product view with the three product principles. */
     vomando: { course: string; path: string; pillars: readonly [string, string, string]; caption: string };
+    /** Voxerano card: the product in three steps (voice → structure → signed report). */
+    voxeranoSteps: readonly [string, string, string];
+    voxeranoCaption: string;
   };
   businesses: Record<BrandId, BusinessCopy>;
+  /** Paco, the recurring character of the ecosystem (shown once, after the ecosystem graphic). */
+  paco: {
+    eyebrow: string;
+    title: Headline;
+    text: string;
+    /** Where he appears, as short chips ("Agralon · operator"). */
+    roles: readonly string[];
+    alt: string;
+  };
   ecosystem: {
     eyebrow: string;
     title: Headline;

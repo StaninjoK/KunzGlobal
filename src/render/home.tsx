@@ -39,6 +39,9 @@ export function BrandLink({ id, ctx, className = "" }: { id: BrandId; ctx: PageC
   );
 }
 
+/** Relative bar heights of the schematic voice waveform on the Voxerano card. */
+const WAVE = [0.3, 0.55, 0.85, 0.6, 0.95, 0.4, 0.7, 1, 0.5, 0.35, 0.8, 0.55, 0.9, 0.45, 0.65, 0.3, 0.5, 0.25];
+
 /** Art-directed photo for a portfolio card: landscape crop from 900 px, portrait file below. */
 type CardImage = { name: string; widths: number[]; w: number; h: number; fallback: number };
 
@@ -291,6 +294,29 @@ export function Home({ ctx }: { ctx: PageContext }) {
                 </figure>
               }
             />
+            <Card
+              id="voxerano"
+              ctx={ctx}
+              variant="dark card--top card--h"
+              visual={
+                <figure className="card__voice">
+                  <div className="card__wave" aria-hidden="true">
+                    {WAVE.map((h, i) => (
+                      <i key={i} style={{ ["--h" as string]: h }} />
+                    ))}
+                  </div>
+                  <ol>
+                    {t.portfolio.voxeranoSteps.map((step, i) => (
+                      <li key={step}>
+                        <span>{String(i + 1).padStart(2, "0")}</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                  <figcaption>{t.portfolio.voxeranoCaption}</figcaption>
+                </figure>
+              }
+            />
           </div>
           <p className="portfolio__more" data-reveal>
             <a className="text-link" href={pagePath(lang, "businesses")}>
@@ -312,6 +338,26 @@ export function Home({ ctx }: { ctx: PageContext }) {
             </p>
           </div>
           <Ecosystem t={t} lang={lang} />
+          {/* Paco: the group's character. The 3D viewer loads only when this block comes near (src/client/main.ts). */}
+          <div className="paco" id="paco">
+            <div className="paco__stage" data-reveal="media">
+              <paco-3d src="/paco/paco-base.glb" poster="/paco/paco-kunz-global.webp" props="globe" camera="wide" accent="#d8c9a8" look="cursor" wave="" mobile="poster" alt={t.paco.alt}>
+                <img src="/paco/paco-kunz-global.webp" alt={t.paco.alt} width={800} height={800} loading="lazy" decoding="async" />
+              </paco-3d>
+            </div>
+            <div className="paco__copy">
+              <Eyebrow>{t.paco.eyebrow}</Eyebrow>
+              <Headline parts={t.paco.title} />
+              <p className="lead" data-reveal>
+                {t.paco.text}
+              </p>
+              <ul className="paco__roles" data-reveal>
+                {t.paco.roles.map((role) => (
+                  <li key={role}>{role}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 

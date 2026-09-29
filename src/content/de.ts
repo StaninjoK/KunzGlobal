@@ -54,7 +54,7 @@ export const de: Content = {
     body: "Jedes Unternehmen hat seine eigene Marke, seinen eigenen Markt und seinen eigenen Fokus. Die Gruppe verbindet sie — mit gemeinsamer Technologie, operativer Erfahrung und internationalem Blick.",
     facts: [
       { label: "Standort", value: "San José, Uruguay" },
-      { label: "Portfolio", value: "Sieben aktive Unternehmen" },
+      { label: "Portfolio", value: "Acht aktive Unternehmen" },
       { label: "Branchen", value: "Landwirtschaft · Technologie · Handel · Vertrieb" },
       { label: "Arbeitssprachen", value: "English · Español · Deutsch · Português" },
     ],
@@ -62,7 +62,7 @@ export const de: Content = {
   portfolio: {
     eyebrow: "Portfolio",
     title: ["Unsere", "Unternehmen."],
-    lead: "Sieben Marken, jede spezialisiert auf ihr Feld. Aufgebaut und betrieben innerhalb der Gruppe.",
+    lead: "Acht Marken, jede spezialisiert auf ihr Feld. Aufgebaut und betrieben innerhalb der Gruppe.",
     viewAll: "Alle Unternehmen im Detail",
     external: "öffnet in neuem Tab",
     siteLang: { en: "Website auf Englisch", es: "Website auf Spanisch", de: "Website auf Deutsch", pt: "Website auf Portugiesisch" },
@@ -75,6 +75,8 @@ export const de: Content = {
     akquiseSteps: ["Zielkundenliste", "Erstansprache", "Termin"],
     akquiseCaption: "Ablauf der Dienstleistung",
     vomando: { course: "Spanisch · Uruguay", path: "Ihr Lernpfad", pillars: ["Personalisiertes Lernen", "Lokale Alltagssprache", "KI-gestütztes Üben"], caption: "Schematische Produktansicht" },
+    voxeranoSteps: ["Sprache", "Struktur", "Unterschriebener Bericht"],
+    voxeranoCaption: "Schematischer Ablauf",
   },
   businesses: {
     agrotech: {
@@ -136,6 +138,22 @@ export const de: Content = {
       focus: ["Personalisiertes Lernen", "Lokale Alltagssprache", "KI-gestütztes Üben", "Mobile-first"],
       status: "In Entwicklung",
     },
+    voxerano: {
+      category: "Technologie für den Außendienst",
+      short: "Voice-to-Report-Software für Service-Teams im Außendienst: Techniker sprechen, und der strukturierte Servicebericht ist fertig, bevor sie den Einsatzort verlassen.",
+      offer: "Software für Service-Teams im Außendienst: Techniker beschreiben den Einsatz vor Ort, und Voxerano macht aus Sprache, Fotos und Notizen einen strukturierten, geprüften und unterschriebenen Bericht mit PDF.",
+      cta: "Voxerano entdecken",
+      long: "Voxerano ist das Voice-to-Report-Produkt der Gruppe, entwickelt innerhalb von Kunz Systems. Techniker beschreiben die Arbeit vor Ort in eigenen Worten; Voxerano ordnet das Gesagte in eine Berichtsstruktur, verknüpft Fotos und Kundendaten, und jeder Punkt zeigt seine Quelle. Das Team prüft und gibt frei, der Kunde unterschreibt auf dem Gerät, und das PDF ist fertig, bevor jemand den Einsatzort verlässt. Voxerano befindet sich in Entwicklung und nimmt Teams über Early Access persönlich auf.",
+      focus: ["Spracherfassung", "Strukturierte Berichte", "Prüfung & Freigabe", "Unterschriebenes PDF"],
+      status: "In Entwicklung · Early Access",
+    },
+  },
+  paco: {
+    eyebrow: "Die Figur der Gruppe",
+    title: ["Das ist", "Paco."],
+    text: "Paco ist die wiederkehrende Figur des Kunz-Ökosystems. Er taucht in unseren Produkten in verschiedenen Rollen auf: als Operator bei Agralon, mit Headset bei Renvora, am Mikrofon bei Voxerano, als Begleiter bei Vomando. Eine Figur, viele Unternehmen: ein leises Zeichen, dass hier alles zusammengehört.",
+    roles: ["Agralon · Operator", "Renvora · Vertrieb", "Voxerano · Stimme", "Vomando · Begleiter"],
+    alt: "Paco, die Figur von Kunz Global: ein freundliches Gürteltier neben einem Globus.",
   },
   ecosystem: {
     eyebrow: "Ökosystem",
@@ -223,7 +241,7 @@ export const de: Content = {
   },
   businessesPage: {
     eyebrow: "Portfolio",
-    title: ["Sieben Unternehmen.", "Eine Gruppe."],
+    title: ["Acht Unternehmen.", "Eine Gruppe."],
     lead: "Jedes Unternehmen im Portfolio ist spezialisiert, tritt unter eigener Marke auf und wird innerhalb von Kunz Global betrieben.",
     focusLabel: "Schwerpunkte",
     futureLink: "Was als Nächstes kommt",
@@ -248,7 +266,7 @@ export const de: Content = {
     },
     facts: [
       { label: "Sitz", value: "San José, Uruguay" },
-      { label: "Unternehmen", value: "Sieben aktive Marken" },
+      { label: "Unternehmen", value: "Acht aktive Marken" },
       { label: "Felder", value: "Landwirtschaft, Software, Handel, Vertrieb" },
     ],
   },

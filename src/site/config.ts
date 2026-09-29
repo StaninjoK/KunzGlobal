@@ -33,7 +33,7 @@ export function pagePath(lang: Lang, page: PageId, hash = ""): string {
   return `${prefix}${SLUG[page]}${hash}`;
 }
 
-export const BRANDS = ["agrotech", "agralon", "sourcing", "renvora", "systems", "akquise", "vomando"] as const;
+export const BRANDS = ["agrotech", "agralon", "sourcing", "renvora", "systems", "akquise", "vomando", "voxerano"] as const;
 export type BrandId = (typeof BRANDS)[number];
 
 export interface Brand {
@@ -54,6 +54,8 @@ export const BRAND: Record<BrandId, Brand> = {
   akquise: { id: "akquise", name: "KunzAkquise", url: "https://kunzakquise.com/", domain: "kunzakquise.com" },
   // vomando.com is the product landing page (EN at the root, /es/ /de/ /pt/); the product itself is still in development.
   vomando: { id: "vomando", name: "Vomando", url: "https://vomando.com/", domain: "vomando.com" },
+  // voxerano.com is live (checked 2026-09-29, EN/DE/ES/PT under /en /de /es /pt); the product is in development.
+  voxerano: { id: "voxerano", name: "Voxerano", url: "https://voxerano.com/", domain: "voxerano.com" },
 };
 
 export interface BrandTarget {
@@ -109,6 +111,12 @@ export const BRAND_TARGET: Record<BrandId, Record<Lang, BrandTarget> | null> = {
     es: { href: "https://vomando.com/es/", lang: "es" },
     de: { href: "https://vomando.com/de/", lang: "de" },
     pt: { href: "https://vomando.com/pt/", lang: "pt" },
+  },
+  voxerano: {
+    en: { href: "https://voxerano.com/en", lang: "en" },
+    es: { href: "https://voxerano.com/es", lang: "es" },
+    de: { href: "https://voxerano.com/de", lang: "de" },
+    pt: { href: "https://voxerano.com/pt", lang: "pt" },
   },
 };
 
