@@ -125,21 +125,6 @@ test("Vomando links to its landing page in the page language and stays marked as
   }
 });
 
-test("Paco: one block on the home page, poster fallback with dimensions, viewer assets present, never in the hero or legal pages", () => {
-  for (const lang of LANGS) {
-    const prefix = lang === "en" ? "/" : `/${lang}/`;
-    const home = read(prefix);
-    assert.equal((home.match(/<paco-3d /g) || []).length, 1, `${lang}: exactly one Paco block`);
-    const block = home.match(/<paco-3d [^>]*>[\s\S]*?<\/paco-3d>/)[0];
-    assert.ok(home.indexOf("<paco-3d ") > home.indexOf('id="ecosystem"') && home.indexOf("<paco-3d ") < home.indexOf('id="ventures"'), `${lang}: Paco sits in the ecosystem section`);
-    assert.match(block, /<img src="\/paco\/paco-kunz-global\.webp" alt="[^"]+" width="800" height="800"/, `${lang}: poster fallback`);
-    assert.ok(!home.slice(0, home.indexOf('id="group"')).includes("paco"), `${lang}: no Paco in the hero`);
-    for (const page of ["legal/", "privacy/", "terms/"]) assert.ok(!read(prefix + page).includes("<paco-3d"), `${lang}/${page}: no Paco on legal pages`);
-  }
-  for (const f of ["paco/paco-viewer.js", "paco/paco-base.glb", "paco/paco-kunz-global.webp"]) assert.ok(fs.existsSync(path.join(dist, f)), `missing ${f}`);
-  assert.ok(fs.statSync(path.join(dist, "paco/paco-base.glb")).size < 1_000_000, "model stays under 1 MB");
-});
-
 test("language switcher points to the same page in each language", () => {
   const html = read("/de/about/");
   for (const url of ["/about/", "/es/about/", "/de/about/", "/pt/about/"]) assert.ok(html.includes(`href="${url}"`), `switcher misses ${url}`);

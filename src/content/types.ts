@@ -83,15 +83,6 @@ export interface Content {
     voxeranoCaption: string;
   };
   businesses: Record<BrandId, BusinessCopy>;
-  /** Paco, the recurring character of the ecosystem (shown once, after the ecosystem graphic). */
-  paco: {
-    eyebrow: string;
-    title: Headline;
-    text: string;
-    /** Where he appears, as short chips ("Agralon · operator"). */
-    roles: readonly string[];
-    alt: string;
-  };
   ecosystem: {
     eyebrow: string;
     title: Headline;
