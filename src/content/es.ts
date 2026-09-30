@@ -148,13 +148,6 @@ export const es: Content = {
       status: "En desarrollo · acceso anticipado",
     },
   },
-  paco: {
-    eyebrow: "El personaje del grupo",
-    title: ["Este es", "Paco."],
-    text: "Paco es el personaje recurrente del ecosistema Kunz. Aparece en nuestros productos con distintos roles: como operador en Agralon, con auriculares en Renvora, ante el micrófono en Voxerano, como compañero en Vomando. Un personaje, muchas empresas: una señal discreta de que aquí todo forma parte de lo mismo.",
-    roles: ["Agralon · operador", "Renvora · ventas", "Voxerano · voz", "Vomando · compañero"],
-    alt: "Paco, el personaje de Kunz Global: un armadillo amable junto a un globo terráqueo.",
-  },
   ecosystem: {
     eyebrow: "Ecosistema",
     title: ["Marcas independientes.", "Un grupo conectado."],

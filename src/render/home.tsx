@@ -338,26 +338,6 @@ export function Home({ ctx }: { ctx: PageContext }) {
             </p>
           </div>
           <Ecosystem t={t} lang={lang} />
-          {/* Paco: the group's character. The 3D viewer loads only when this block comes near (src/client/main.ts). */}
-          <div className="paco" id="paco">
-            <div className="paco__stage" data-reveal="media">
-              <paco-3d src="/paco/paco-kunz-global.glb" poster="/paco/paco-kunz-global.webp" camera="wide" look="cursor" wave="" mobile="poster" alt={t.paco.alt}>
-                <img src="/paco/paco-kunz-global.webp" alt={t.paco.alt} width={800} height={800} loading="lazy" decoding="async" />
-              </paco-3d>
-            </div>
-            <div className="paco__copy">
-              <Eyebrow>{t.paco.eyebrow}</Eyebrow>
-              <Headline parts={t.paco.title} />
-              <p className="lead" data-reveal>
-                {t.paco.text}
-              </p>
-              <ul className="paco__roles" data-reveal>
-                {t.paco.roles.map((role) => (
-                  <li key={role}>{role}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 
