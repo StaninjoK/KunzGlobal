@@ -148,6 +148,13 @@ export const de: Content = {
       status: "In Entwicklung · Early Access",
     },
   },
+  paco: {
+    eyebrow: "Die Figur der Gruppe",
+    title: ["Das ist", "Paco."],
+    text: "Paco ist die wiederkehrende Figur des Kunz-Ökosystems. Er taucht in unseren Produkten in verschiedenen Rollen auf: als Operator bei Agralon, mit Headset bei Renvora, am Mikrofon bei Voxerano, als Begleiter bei Vomando. Eine Figur, viele Unternehmen: ein leises Zeichen, dass hier alles zusammengehört.",
+    roles: ["Agralon · Operator", "Renvora · Vertrieb", "Voxerano · Stimme", "Vomando · Begleiter"],
+    alt: "Paco, die Figur von Kunz Global: ein freundliches Gürteltier neben einem Globus.",
+  },
   ecosystem: {
     eyebrow: "Ökosystem",
     title: ["Eigenständige Marken.", "Eine verbundene Gruppe."],

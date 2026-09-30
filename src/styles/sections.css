@@ -866,6 +866,68 @@
   overflow: hidden;
   background: radial-gradient(70% 60% at 50% 62%, #17241f 0%, var(--ink) 70%);
 }
+
+/* Paco, the group's character: a quiet band after the ecosystem graphic (3D viewer, poster as fallback) */
+.paco {
+  display: grid;
+  gap: 2rem 4rem;
+  align-items: center;
+  margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+  padding-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+  border-top: 1px solid var(--rule-dark-strong);
+}
+.paco__stage {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-inline: auto;
+}
+.paco__stage::before {
+  content: "";
+  position: absolute;
+  inset: 14% 6% 4%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(185, 200, 189, 0.16), rgba(185, 200, 189, 0) 100%);
+  pointer-events: none;
+}
+paco-3d {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+paco-3d > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+.paco__copy .lead {
+  margin-top: 1.6rem;
+}
+.paco__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+}
+.paco__roles li {
+  padding: 0.42rem 0.85rem;
+  border: 1px solid var(--rule-dark-strong);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--on-dark-soft);
+}
+@media (min-width: 900px) {
+  .paco {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .paco__stage {
+    max-width: 460px;
+  }
+}
 .eco__center {
   display: grid;
   justify-items: center;
